@@ -1,11 +1,15 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
+import photoThales from '@/assets/team/thales-rodrigues.jpeg';
+import photoDiogo from '@/assets/team/diogo-araujo.jpg';
+import photoEliz from '@/assets/team/eliz-modena.jpg';
+
 const team = [
   {
     initials: 'TA',
     name: 'Thales Altieri',
     role: 'Co-Fundador, Diretor e Consultor',
-    image: null as string | null,
+    image: photoThales,
   },
   {
     initials: 'MC',
@@ -23,13 +27,13 @@ const team = [
     initials: 'EM',
     name: 'Eliz Modena',
     role: 'Psicóloga e Consultora Organizacional de Clínicas e Hospitais Veterinários',
-    image: null as string | null,
+    image: photoEliz,
   },
   {
     initials: 'DA',
     name: 'Diogo Araújo',
     role: 'Analista de Dados',
-    image: null as string | null,
+    image: photoDiogo,
   },
 ];
 

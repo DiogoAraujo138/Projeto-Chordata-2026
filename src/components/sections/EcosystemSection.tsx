@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Shield } from 'lucide-react';
-import logoChordataPrincipal from '@/assets/logos/chordata-principal.png';
-import logoMentallvet from '@/assets/logos/mentallvet.png';
-import logoAnalytics from '@/assets/logos/chordata-analytics.png';
-import logoVetconnection from '@/assets/logos/vetconnection.png';
+import logoChordataPrincipal from '@/assets/logos/chordata-consultoria.png';
+import logoMentallvet from '@/assets/logos/mentall.png';
+import logoAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
+import logoVetconnection from '@/assets/logos/vetconnection-new.png';
 import logoDescomplicavet from '@/assets/logos/descomplicavet.png';
+import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
 
 const satellites = [
   {
@@ -35,7 +36,7 @@ const satellites = [
   {
     name: 'JurídicoPet Digital',
     tagline: 'Conformidade Jurídica',
-    logo: null,
+    logo: logoJuridicoPet,
     desc: 'Conformidade jurídica sem burocracia. Assinatura eletrônica segura e válida para documentos veterinários. Termos de consentimento, contratos, autorizações — tudo digital, seguro e rastreável.',
   },
   {

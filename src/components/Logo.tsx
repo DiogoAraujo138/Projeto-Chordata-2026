@@ -1,17 +1,19 @@
 import { useState, useRef, useEffect } from 'react';
 
-import chordataPrincipal from '@/assets/logos/chordata-principal.png';
-import chordataAnalytics from '@/assets/logos/chordata-analytics.png';
-import mentallvet from '@/assets/logos/mentallvet.png';
-import descomplicavet from '@/assets/logos/descomplicavet.png';
-import vetconnection from '@/assets/logos/vetconnection.png';
+import chordataConsultoria from '@/assets/logos/chordata-consultoria.png';
+import chordataAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
+import mentall from '@/assets/logos/mentall.png';
+import vetconnection from '@/assets/logos/vetconnection-new.png';
+import juridicoPet from '@/assets/logos/juridico-pet.png';
+import chordataSimboloSolido from '@/assets/logos/chordata-simbolo-solido.png';
 
 const logoMap = {
-  principal: chordataPrincipal,
+  principal: chordataConsultoria,
   analytics: chordataAnalytics,
-  mentallvet: mentallvet,
-  descomplicavet: descomplicavet,
+  mentallvet: mentall,
   vetconnection: vetconnection,
+  juridicopet: juridicoPet,
+  simbolo: chordataSimboloSolido,
 } as const;
 
 export type LogoVariant = keyof typeof logoMap;

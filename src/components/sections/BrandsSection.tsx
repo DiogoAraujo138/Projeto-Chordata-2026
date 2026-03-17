@@ -1,19 +1,17 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Shield } from 'lucide-react';
 
-import logoChordataPrincipal from '@/assets/logos/chordata-principal.png';
-import logoAnalytics from '@/assets/logos/chordata-analytics.png';
-import logoAnalyticsWhite from '@/assets/logos/chordata-analytics-white.png';
-import logoMentallvet from '@/assets/logos/mentallvet.png';
-import logoDescomplicavet from '@/assets/logos/descomplicavet.png';
-import logoVetconnection from '@/assets/logos/vetconnection.png';
+import logoChordataConsultoria from '@/assets/logos/chordata-consultoria.png';
+import logoAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
+import logoMentall from '@/assets/logos/mentall.png';
+import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
+import logoVetconnection from '@/assets/logos/vetconnection-new.png';
 
 const brands = [
   {
     name: 'Chordata Consultoria',
     description: 'Consultoria estratégica em gestão',
-    logo: logoChordataPrincipal,
-    darkBg: true,
+    logo: logoChordataConsultoria,
+    darkBg: false,
   },
   {
     name: 'Chordata Analytics',
@@ -24,26 +22,20 @@ const brands = [
   {
     name: 'MentAll.Vet',
     description: 'Saúde mental veterinária',
-    logo: logoMentallvet,
+    logo: logoMentall,
     darkBg: true,
   },
   {
     name: 'JurídicoPet Digital',
     description: 'Conformidade jurídica digital',
-    logo: null,
-    darkBg: false,
-  },
-  {
-    name: 'DescomplicaVet',
-    description: 'Teleconsultoria e educação',
-    logo: logoDescomplicavet,
+    logo: logoJuridicoPet,
     darkBg: false,
   },
   {
     name: 'VetConnection',
     description: 'Feiras e eventos veterinários',
     logo: logoVetconnection,
-    darkBg: false,
+    darkBg: true,
   },
 ];
 
@@ -64,7 +56,7 @@ const BrandsSection = () => {
           </p>
         </div>
 
-        <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 stagger-children ${isVisible ? 'visible' : ''}`}>
+        <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 stagger-children ${isVisible ? 'visible' : ''}`}>
           {brands.map((brand) => (
             <div
               key={brand.name}
@@ -78,22 +70,13 @@ const BrandsSection = () => {
                     : 'bg-white border-slate-200 group-hover:border-blue-300'
                   }`}
               >
-                {brand.logo ? (
-                  <img
-                    src={brand.logo}
-                    alt={brand.name}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : (
-                  <div className="flex flex-col items-center gap-1">
-                    <Shield size={28} className="text-blue-500" />
-                    <span className="text-[9px] font-heading font-bold text-slate-700 leading-tight">
-                      JurídicoPet
-                    </span>
-                  </div>
-                )}
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3 className="font-heading text-xs md:text-sm font-semibold text-slate-800 mb-0.5">
                 {brand.name}

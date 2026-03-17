@@ -2,10 +2,11 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useState, useRef, useEffect } from 'react';
 import { Rocket, BarChart3, Heart, CalendarCheck, Scale, Layers, PartyPopper } from 'lucide-react';
 
-import logoChordataPrincipal from '@/assets/logos/chordata-principal.png';
-import logoAnalytics from '@/assets/logos/chordata-analytics.png';
-import logoMentallvet from '@/assets/logos/mentallvet.png';
-import logoVetconnection from '@/assets/logos/vetconnection.png';
+import logoChordataConsultoria from '@/assets/logos/chordata-consultoria.png';
+import logoAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
+import logoMentall from '@/assets/logos/mentall.png';
+import logoVetconnection from '@/assets/logos/vetconnection-new.png';
+import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
 
 const timelineData = [
   {
@@ -13,7 +14,7 @@ const timelineData = [
     nome: 'Chordata Consultoria e Assessoria',
     descricao:
       'O início de tudo. Fundação da consultoria estratégica em gestão empresarial para o mercado veterinário e pet, em Porto Alegre/RS. O primeiro passo de uma visão que se tornaria um ecossistema completo.',
-    logo: logoChordataPrincipal,
+    logo: logoChordataConsultoria,
     icon: Rocket,
     destaque: true,
   },
@@ -31,7 +32,7 @@ const timelineData = [
     nome: 'MentAll.Vet',
     descricao:
       'A saúde mental entra no ecossistema. Atendimento psicológico individual, programas corporativos e treinamentos voltados ao bem-estar de equipes veterinárias — porque equipes saudáveis constroem negócios sustentáveis.',
-    logo: logoMentallvet,
+    logo: logoMentall,
     icon: Heart,
     destaque: false,
   },
@@ -50,6 +51,7 @@ const timelineData = [
     descricao:
       'Ano marcante: realização do evento VetConnection / Health Meeting Brasil (15 mil visitantes, 16 estados, 6 países) e lançamento do JurídicoPet Digital — plataforma de assinatura eletrônica e conformidade jurídica para o setor pet & vet.',
     logo: logoVetconnection,
+    secondaryLogo: logoJuridicoPet,
     icon: PartyPopper,
     destaque: false,
   },
@@ -122,7 +124,7 @@ const TimelineItem = ({
               </span>
             )}
 
-            <div className={`mb-3 flex ${isLeft ? 'justify-end' : 'justify-start'}`}>
+            <div className={`mb-3 flex items-center gap-2 ${isLeft ? 'justify-end' : 'justify-start'}`}>
               {item.logo ? (
                 <img
                   src={item.logo}
@@ -134,6 +136,14 @@ const TimelineItem = ({
                 <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
                   <Icon size={20} className="text-blue-400" />
                 </div>
+              )}
+              {'secondaryLogo' in item && item.secondaryLogo && (
+                <img
+                  src={item.secondaryLogo}
+                  alt="Logo secundário"
+                  className="h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                  loading="lazy"
+                />
               )}
             </div>
 
@@ -188,13 +198,16 @@ const TimelineItem = ({
             </span>
           )}
 
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3 mb-2 flex-wrap">
             {item.logo ? (
               <img src={item.logo} alt={item.nome} className="h-8 w-auto object-contain" loading="lazy" />
             ) : (
               <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                 <Icon size={16} className="text-blue-400" />
               </div>
+            )}
+            {'secondaryLogo' in item && item.secondaryLogo && (
+              <img src={item.secondaryLogo} alt="Logo secundário" className="h-7 w-auto object-contain" loading="lazy" />
             )}
             <h3 className="font-heading text-sm font-semibold text-white">{item.nome}</h3>
           </div>
