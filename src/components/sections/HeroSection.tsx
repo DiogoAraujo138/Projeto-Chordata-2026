@@ -1,4 +1,5 @@
 import { ChevronDown } from 'lucide-react';
+import chordataLogo from '@/assets/logos/chordata-principal.png';
 
 const HeroSection = () => {
   const handleScroll = (href: string) => {
@@ -27,27 +28,15 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-chordata-navy via-chordata-navy/90 to-chordata-royal/30" />
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Logo text */}
-        <div className="mb-6 flex items-center justify-center gap-2">
-          {/* Logo gradient bar */}
-          <div className="w-2 h-12 rounded-full" style={{
-            background: 'linear-gradient(180deg, #F7C948, #8DC63F, #3FC1C0, #2E5FA3, #6B4FA0)'
-          }} />
-          <div>
-            <div className="flex items-baseline">
-              <span className="font-sora text-4xl md:text-5xl text-white/70 font-light tracking-wider">CHOR</span>
-              <span className="font-sora text-4xl md:text-5xl text-white font-bold">data</span>
-            </div>
-            <p className="text-chordata-teal text-xs md:text-sm tracking-[0.3em] uppercase font-inter">
-              Soluções em Negócios Veterinários
-            </p>
-          </div>
+        {/* Logo image */}
+        <div className="mb-8 flex justify-center">
+          <img src={chordataLogo} alt="CHORdata - Soluções em Negócios Veterinários" className="h-16 md:h-20 w-auto" />
         </div>
 
         {/* Tagline */}
         <h1 className="font-sora text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-          Gestão 360° para o Seu{' '}
-          <span className="text-chordata-teal">Negócio Veterinário</span>
+          O Ecossistema Completo para{' '}
+          <span className="text-chordata-teal">Transformar seu Negócio Veterinário</span>
         </h1>
 
         <p className="text-white/70 text-lg md:text-xl font-inter max-w-2xl mx-auto mb-10 leading-relaxed">
