@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import chordataLogo from '@/assets/logos/chordata-principal.png';
 
 const navItems = [
   { label: 'Propósito', href: '#proposito' },
   { label: 'Ecossistema', href: '#ecossistema' },
   { label: 'Método', href: '#metodo' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Resultados', href: '#impacto' },
+  { label: 'Resultados', href: '#atuacao' },
   { label: 'Time', href: '#time' },
   { label: 'Contato', href: '#contato' },
 ];
@@ -37,9 +38,8 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-4">
         {/* Logo */}
-        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-1 text-white">
-          <span className="font-sora text-xl font-light tracking-wide">CHOR</span>
-          <span className="font-sora text-xl font-bold">data</span>
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center">
+          <img src={chordataLogo} alt="CHORdata" className="h-8 md:h-10 w-auto" />
         </button>
 
         {/* Desktop nav */}
