@@ -12,22 +12,22 @@ const ClientsSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-20 md:py-32 bg-background">
-      <div ref={ref} className={`container mx-auto px-4 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsla(180,50%,50%,0.03),transparent_40%)] pointer-events-none" />
+
+      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-14">
-          <span className="text-chordata-teal text-sm font-semibold tracking-[0.25em] uppercase font-inter mb-4 block">
-            — Clientes e Parceiros —
-          </span>
-          <h2 className="font-sora text-2xl md:text-4xl font-bold text-primary">
+          <span className="section-label">— Clientes e Parceiros —</span>
+          <h2 className="section-title text-primary">
             Ecossistema Chordata
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 stagger-children ${isVisible ? 'visible' : ''}`}>
           {clients.map((client) => (
             <div
               key={client}
-              className="bg-card border border-border rounded-2xl p-4 flex items-center justify-center text-center hover:shadow-lg hover:border-chordata-teal/30 hover:-translate-y-1 transition-all duration-300 min-h-[80px]"
+              className="card-light-interactive p-4 flex items-center justify-center text-center min-h-[80px]"
             >
               <span className="font-inter text-sm font-medium text-primary">{client}</span>
             </div>

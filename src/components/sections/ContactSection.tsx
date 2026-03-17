@@ -1,138 +1,161 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Mail, Phone, MapPin, Globe, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Linkedin, Instagram, Send, CheckCircle } from 'lucide-react';
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Frontend-only validation
     if (form.name && form.email && form.message) {
-      setSubmitted(true);
+      setLoading(true);
+      // Simulating API call
+      setTimeout(() => {
+        setLoading(false);
+        setSubmitted(true);
+      }, 1200);
     }
   };
 
   return (
-    <section id="contato" className="py-20 md:py-32 bg-chordata-navy">
-      <div ref={ref} className={`container mx-auto px-4 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+    <section id="contato" className="py-20 md:py-32 bg-chordata-navy relative overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chordata-teal/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-chordata-teal/[0.03] rounded-full blur-[120px] pointer-events-none" />
+
+      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-14">
-          <span className="text-chordata-teal text-sm font-semibold tracking-[0.25em] uppercase font-inter mb-4 block">
-            — Contato —
-          </span>
-          <h2 className="font-sora text-2xl md:text-4xl font-bold text-white mb-3">
+          <span className="section-label">— Contato —</span>
+          <h2 className="section-title text-white">
             Vamos começar a sua transformação?
           </h2>
-          <p className="text-white/60 font-inter max-w-2xl mx-auto">
+          <p className="text-white/55 section-subtitle max-w-2xl mx-auto">
             Se você é gestor de uma clínica ou hospital veterinário e quer reduzir custos, reter talentos, garantir conformidade jurídica e tomar decisões baseadas em dados, o Ecossistema Chordata é para você.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {/* Form */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+          <div className="glass-card p-6 md:p-8">
             {submitted ? (
-              <div className="text-center py-12">
+              <div className="text-center py-12 animate-scale-in">
                 <div className="w-16 h-16 rounded-full bg-chordata-teal/20 flex items-center justify-center mx-auto mb-4">
-                  <Mail className="text-chordata-teal" size={28} />
+                  <CheckCircle className="text-chordata-teal" size={32} />
                 </div>
                 <h3 className="font-sora font-bold text-white text-xl mb-2">Mensagem enviada!</h3>
-                <p className="text-white/60 font-inter text-sm">Entraremos em contato em breve.</p>
+                <p className="text-white/55 font-inter text-sm">Entraremos em contato em breve.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Seu nome"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 font-inter text-sm focus:outline-none focus:border-chordata-teal transition"
-                />
-                <input
-                  type="email"
-                  placeholder="Seu email"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 font-inter text-sm focus:outline-none focus:border-chordata-teal transition"
-                />
-                <input
-                  type="tel"
-                  placeholder="Telefone (opcional)"
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 font-inter text-sm focus:outline-none focus:border-chordata-teal transition"
-                />
+                {[
+                  { name: 'name', type: 'text', placeholder: 'Seu nome', required: true },
+                  { name: 'email', type: 'email', placeholder: 'Seu email', required: true },
+                  { name: 'phone', type: 'tel', placeholder: 'Telefone (opcional)', required: false },
+                ].map((field) => (
+                  <input
+                    key={field.name}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    required={field.required}
+                    value={form[field.name as keyof typeof form]}
+                    onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 font-inter text-sm
+                      focus:outline-none focus:border-chordata-teal/60 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_hsla(180,50%,50%,0.1)]
+                      transition-all duration-300"
+                  />
+                ))}
                 <textarea
                   placeholder="Sua mensagem"
                   required
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 font-inter text-sm focus:outline-none focus:border-chordata-teal transition resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 font-inter text-sm
+                    focus:outline-none focus:border-chordata-teal/60 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_hsla(180,50%,50%,0.1)]
+                    transition-all duration-300 resize-none"
                 />
                 <button
                   type="submit"
-                  className="w-full bg-chordata-teal text-chordata-navy font-semibold py-3 rounded-xl hover:brightness-110 transition font-inter"
+                  disabled={loading}
+                  className="btn-primary w-full py-3.5 flex items-center justify-center gap-2 text-sm disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Agendar uma Conversa Gratuita
+                  {loading ? (
+                    <div className="w-5 h-5 border-2 border-chordata-navy/30 border-t-chordata-navy rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Agendar uma Conversa Gratuita
+                    </>
+                  )}
                 </button>
               </form>
             )}
           </div>
 
           {/* Contact info */}
-          <div className="space-y-6">
-            <a href="mailto:contato@chordataconsultoria.com" className="flex items-center gap-4 text-white/80 hover:text-chordata-teal transition group">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-chordata-teal/10 transition">
-                <Mail size={18} className="text-chordata-teal" />
-              </div>
-              <span className="font-inter text-sm">contato@chordataconsultoria.com</span>
-            </a>
+          <div className="space-y-5">
+            {[
+              { icon: Mail, href: 'mailto:contato@chordataconsultoria.com', text: 'contato@chordataconsultoria.com', isLink: true },
+            ].map((item) => (
+              <a key={item.text} href={item.href} className="flex items-center gap-4 text-white/75 hover:text-white transition-colors group">
+                <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-chordata-teal/10 group-hover:border-chordata-teal/30 transition-all duration-300">
+                  <item.icon size={18} className="text-chordata-teal" />
+                </div>
+                <span className="font-inter text-sm">{item.text}</span>
+              </a>
+            ))}
 
-            <div className="flex items-center gap-4 text-white/80">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+            <div className="flex items-center gap-4 text-white/75">
+              <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                 <Phone size={18} className="text-chordata-teal" />
               </div>
-              <div className="font-inter text-sm">
+              <div className="font-inter text-sm space-y-0.5">
                 <p>Mikael Cattani: (51) 97622-7070</p>
                 <p>Thales Altieri: (51) 91196-578</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-white/80">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+            <div className="flex items-center gap-4 text-white/75">
+              <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                 <MapPin size={18} className="text-chordata-teal" />
               </div>
               <span className="font-inter text-sm">Instituto Caldeira — Tv. São José, 455, Navegantes, Porto Alegre - RS</span>
             </div>
 
-            <a href="https://chordataconsultoria.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-white/80 hover:text-chordata-teal transition group">
-              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-chordata-teal/10 transition">
+            <a href="https://chordataconsultoria.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-white/75 hover:text-white transition-colors group">
+              <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-chordata-teal/10 group-hover:border-chordata-teal/30 transition-all duration-300">
                 <Globe size={18} className="text-chordata-teal" />
               </div>
               <span className="font-inter text-sm">chordataconsultoria.com</span>
             </a>
 
             <div className="flex gap-3 pt-4">
-              <a href="https://linkedin.com/company/chordata-consultoria" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/60 hover:bg-chordata-teal/10 hover:text-chordata-teal transition" aria-label="LinkedIn">
-                <Linkedin size={18} />
-              </a>
-              <a href="https://instagram.com/chordataconsultoria" target="_blank" rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/60 hover:bg-chordata-teal/10 hover:text-chordata-teal transition" aria-label="Instagram">
-                <Instagram size={18} />
-              </a>
+              {[
+                { icon: Linkedin, href: 'https://linkedin.com/company/chordata-consultoria', label: 'LinkedIn' },
+                { icon: Instagram, href: 'https://instagram.com/chordataconsultoria', label: 'Instagram' },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50
+                    hover:bg-chordata-teal/10 hover:border-chordata-teal/30 hover:text-chordata-teal
+                    transition-all duration-300"
+                  aria-label={social.label}
+                >
+                  <social.icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-white/10 text-center">
-          <p className="text-white/40 font-inter text-sm">© 2025 Chordata Consultoria · Todos os direitos reservados</p>
+          <p className="text-white/35 font-inter text-sm">© 2025 Chordata Consultoria · Todos os direitos reservados</p>
         </div>
       </div>
     </section>

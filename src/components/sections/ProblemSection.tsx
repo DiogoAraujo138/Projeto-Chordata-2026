@@ -2,39 +2,39 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { FileText, Brain, Scale, BookOpen, BarChart3, RefreshCw } from 'lucide-react';
 
 const problems = [
-  { icon: FileText, title: 'Gestão financeira complexa', emoji: '🧾' },
-  { icon: Brain, title: 'Saúde mental da equipe', emoji: '🧠' },
-  { icon: Scale, title: 'Conformidade jurídica', emoji: '⚖️' },
-  { icon: BookOpen, title: 'Educação continuada', emoji: '📚' },
-  { icon: BarChart3, title: 'Tomada de decisão baseada em dados', emoji: '📊' },
-  { icon: RefreshCw, title: 'Processos desorganizados', emoji: '🌀' },
+  { icon: FileText, title: 'Gestão financeira complexa' },
+  { icon: Brain, title: 'Saúde mental da equipe' },
+  { icon: Scale, title: 'Conformidade jurídica' },
+  { icon: BookOpen, title: 'Educação continuada' },
+  { icon: BarChart3, title: 'Tomada de decisão baseada em dados' },
+  { icon: RefreshCw, title: 'Processos desorganizados' },
 ];
 
 const ProblemSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-20 md:py-32 bg-chordata-navy">
-      <div ref={ref} className={`container mx-auto px-4 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+    <section className="py-20 md:py-32 bg-chordata-navy relative overflow-hidden">
+      {/* Gradient accent */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chordata-teal/30 to-transparent" />
+
+      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-14">
-          <span className="text-chordata-teal text-sm font-semibold tracking-[0.25em] uppercase font-inter mb-4 block">
-            — Por que Chordata? —
-          </span>
-          <h2 className="font-sora text-2xl md:text-4xl font-bold text-white mb-4 leading-tight">
+          <span className="section-label">— Por que Chordata? —</span>
+          <h2 className="section-title text-white mb-4">
             Gerenciar uma clínica ou hospital veterinário vai muito além da medicina.
           </h2>
-          <p className="text-white/60 font-inter text-lg">Você precisa lidar com:</p>
+          <p className="text-white/55 section-subtitle">Você precisa lidar com:</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children ${isVisible ? 'visible' : ''}`}>
           {problems.map((p, i) => (
             <div
               key={i}
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-chordata-teal/30 transition-all duration-300 group"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              className="card-interactive p-6 group cursor-default"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-chordata-teal/10 flex items-center justify-center group-hover:bg-chordata-teal/20 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-chordata-teal/10 flex items-center justify-center shrink-0 group-hover:bg-chordata-teal/20 group-hover:scale-110 transition-all duration-300">
                   <p.icon className="text-chordata-teal" size={22} />
                 </div>
                 <p className="text-white font-inter font-medium text-sm md:text-base">{p.title}</p>
@@ -43,7 +43,7 @@ const ProblemSection = () => {
           ))}
         </div>
 
-        <p className="text-center text-chordata-teal font-inter mt-10 text-lg">
+        <p className="text-center text-chordata-teal font-inter mt-10 text-base md:text-lg opacity-90">
           Por isso, criamos um ecossistema onde cada solução se potencializa com as outras.
         </p>
       </div>

@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import chordataLogo from '@/assets/logos/chordata-principal.png';
+import Logo from '@/components/Logo';
 
 const HeroSection = () => {
   const handleScroll = (href: string) => {
@@ -27,33 +27,38 @@ const HeroSection = () => {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-chordata-navy via-chordata-navy/90 to-chordata-royal/30" />
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      {/* Subtle radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-chordata-teal/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
         {/* Logo image */}
-        <div className="mb-8 flex justify-center">
-          <img src={chordataLogo} alt="CHORdata - Soluções em Negócios Veterinários" className="h-16 md:h-20 w-auto" />
+        <div className="mb-8 flex justify-center animate-fade-in-down" style={{ animationDelay: '0.1s' }}>
+          <Logo variant="principal" size="hero" glow />
         </div>
 
         {/* Tagline */}
-        <h1 className="font-sora text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        <h1 className="font-sora text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           O Ecossistema Completo para{' '}
-          <span className="text-chordata-teal">Transformar seu Negócio Veterinário</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-chordata-teal to-chordata-green">
+            Transformar seu Negócio Veterinário
+          </span>
         </h1>
 
-        <p className="text-white/70 text-lg md:text-xl font-inter max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-white/65 text-base sm:text-lg md:text-xl font-inter max-w-2xl mx-auto mb-10 leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
           Do diagnóstico à transformação — somos o ecossistema completo para clínicas, hospitais e negócios do setor pet/vet.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
           <button
             onClick={() => handleScroll('#ecossistema')}
-            className="bg-chordata-teal text-chordata-navy font-semibold px-8 py-4 rounded-xl text-lg hover:brightness-110 transition-all shadow-lg shadow-chordata-teal/20"
+            className="btn-primary px-8 py-4 text-lg shadow-lg shadow-chordata-teal/20"
           >
             Conheça o Ecossistema ↓
           </button>
           <button
             onClick={() => handleScroll('#contato')}
-            className="border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-all"
+            className="btn-outline px-8 py-4 text-lg"
           >
             Agendar Conversa
           </button>

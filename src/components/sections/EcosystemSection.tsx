@@ -3,7 +3,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Shield } from 'lucide-react';
 import logoChordataPrincipal from '@/assets/logos/chordata-principal.png';
 import logoMentallvet from '@/assets/logos/mentallvet.png';
-import logoAnalytics from '@/assets/logos/chordata-analytics.jpg';
+import logoAnalytics from '@/assets/logos/chordata-analytics.png';
 import logoVetconnection from '@/assets/logos/vetconnection.png';
 import logoDescomplicavet from '@/assets/logos/descomplicavet.png';
 
@@ -60,6 +60,8 @@ const SatelliteIcon = ({ sat, size, selected }: { sat: typeof satellites[0]; siz
         alt={sat.name}
         className="object-contain rounded-lg"
         style={{ width: size, height: size }}
+        loading="lazy"
+        decoding="async"
       />
     );
   }
@@ -71,23 +73,25 @@ const EcosystemSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="ecossistema" className="py-20 md:py-32 bg-gradient-to-b from-chordata-navy via-chordata-royal/20 to-chordata-navy">
-      <div ref={ref} className={`container mx-auto px-4 max-w-6xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+    <section id="ecossistema" className="py-20 md:py-32 bg-gradient-to-b from-chordata-navy via-chordata-royal/20 to-chordata-navy relative overflow-hidden">
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-1/4 left-0 w-64 h-64 bg-chordata-teal/[0.04] rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-chordata-purple/[0.04] rounded-full blur-[100px] pointer-events-none" />
+
+      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-6xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-14">
-          <span className="text-chordata-teal text-sm font-semibold tracking-[0.25em] uppercase font-inter mb-4 block">
-            — O Ecossistema —
-          </span>
-          <h2 className="font-sora text-2xl md:text-4xl font-bold text-white mb-3">
+          <span className="section-label">— O Ecossistema —</span>
+          <h2 className="section-title text-white">
             Gestão 360° para o Mercado Veterinário
           </h2>
-          <p className="text-white/60 font-inter text-lg">6 soluções integradas. Um único ecossistema. Transformação completa.</p>
+          <p className="text-white/55 section-subtitle">6 soluções integradas. Um único ecossistema. Transformação completa.</p>
         </div>
 
         {/* Desktop orbital diagram */}
         <div className="hidden lg:block relative w-full max-w-2xl mx-auto aspect-square mb-8">
           {/* Center hub */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-white border-2 border-chordata-teal/40 flex items-center justify-center orbit-glow z-10 p-4">
-            <img src={logoChordataPrincipal} alt="Chordata" className="w-full h-full object-contain" />
+            <img src={logoChordataPrincipal} alt="Chordata" className="w-full h-full object-contain" loading="lazy" decoding="async" />
           </div>
 
           {/* Orbit ring */}
@@ -104,7 +108,7 @@ const EcosystemSection = () => {
               <button
                 key={i}
                 className={`absolute w-28 h-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 transition-all duration-300 cursor-pointer hover:scale-110 ${
-                  selected === i ? 'scale-110 shadow-xl' : ''
+                  selected === i ? 'scale-110 shadow-xl shadow-white/10' : ''
                 }`}
                 style={{
                   left: `${x}%`,
@@ -115,7 +119,7 @@ const EcosystemSection = () => {
                 onClick={() => setSelected(selected === i ? null : i)}
               >
                 {sat.logo ? (
-                  <img src={sat.logo} alt={sat.name} className="w-20 h-16 object-contain rounded" />
+                  <img src={sat.logo} alt={sat.name} className="w-20 h-16 object-contain rounded" loading="lazy" decoding="async" />
                 ) : (
                   <>
                     <Shield size={24} style={{ color: selected === i ? 'white' : sat.color }} />
@@ -132,25 +136,25 @@ const EcosystemSection = () => {
 
         {/* Selected detail (desktop) */}
         {selected !== null && (
-          <div className="hidden lg:block max-w-xl mx-auto mb-8 bg-white/5 border border-white/10 rounded-2xl p-6 text-center animate-fade-in">
+          <div className="hidden lg:block max-w-xl mx-auto mb-8 glass-card p-6 text-center animate-fade-in">
             <h3 className="font-sora font-bold text-lg mb-1" style={{ color: satellites[selected].color }}>
               {satellites[selected].name}
             </h3>
-            <p className="text-white/60 text-sm mb-3 font-inter">{satellites[selected].tagline}</p>
+            <p className="text-white/55 text-sm mb-3 font-inter">{satellites[selected].tagline}</p>
             <p className="text-white/80 font-inter text-sm leading-relaxed">{satellites[selected].desc}</p>
           </div>
         )}
 
         {/* Mobile cards */}
-        <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className={`lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children ${isVisible ? 'visible' : ''}`}>
           {satellites.map((sat, i) => (
             <div
               key={i}
-              className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition-all cursor-pointer"
+              className="card-interactive p-5 cursor-pointer"
               onClick={() => setSelected(selected === i ? null : i)}
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden"
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden shrink-0"
                   style={{ backgroundColor: sat.logo ? 'white' : `${sat.color}22` }}>
                   <SatelliteIcon sat={sat} size={sat.logo ? 40 : 20} selected={selected === i} />
                 </div>
