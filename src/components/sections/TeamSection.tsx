@@ -3,6 +3,8 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import photoThales from '@/assets/team/thales-rodrigues.jpeg';
 import photoDiogo from '@/assets/team/diogo-araujo.jpg';
 import photoEliz from '@/assets/team/eliz-modena.jpg';
+import photoMikael from '@/assets/team/mikael-cattani.jpeg';
+import photoEduardo from '@/assets/team/eduardo-monteiro.png';
 
 const team = [
   {
@@ -15,13 +17,13 @@ const team = [
     initials: 'MC',
     name: 'Mikael Cattani',
     role: 'Co-Fundador, Diretor e Consultor',
-    image: null as string | null,
+    image: photoMikael,
   },
   {
     initials: 'EM',
     name: 'Eduardo Monteiro',
     role: 'Consultor Associado',
-    image: null as string | null,
+    image: photoEduardo,
   },
   {
     initials: 'EM',

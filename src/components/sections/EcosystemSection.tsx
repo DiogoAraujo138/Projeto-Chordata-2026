@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Shield } from 'lucide-react';
+import logoChordataEcossistema from '@/assets/logos/chordata-ecossistema-branco.png';
 import logoChordataPrincipal from '@/assets/logos/chordata-consultoria.png';
 import logoMentallvet from '@/assets/logos/mentall.png';
 import logoAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
 import logoVetconnection from '@/assets/logos/vetconnection-new.png';
-import logoDescomplicavet from '@/assets/logos/descomplicavet.png';
 import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
 
 const satellites = [
@@ -26,12 +26,6 @@ const satellites = [
     tagline: 'Inteligência de Dados',
     logo: logoAnalytics,
     desc: 'Dados transformados em decisões. Nossa plataforma de inteligência de dados transforma métricas em estratégia em tempo real. O que está funcionando e o que precisa mudar, decidindo com números, não com intuição.',
-  },
-  {
-    name: 'DescomplicaVet',
-    tagline: 'Teleconsultoria e Educação',
-    logo: logoDescomplicavet,
-    desc: 'Teleconsultoria e educação continuada ao alcance de um clique. Aplicativo que conecta sua equipe com especialistas veterinários 24/7. Auxílio em diagnósticos, interpretação de exames, protocolos clínicos atualizados.',
   },
   {
     name: 'JurídicoPet Digital',
@@ -75,14 +69,14 @@ const EcosystemSection = () => {
           <h2 className="section-title text-white">
             Gestão Integrada para o Mercado Veterinário
           </h2>
-          <p className="text-slate-400 section-subtitle">6 soluções integradas. Um único ecossistema. Transformação completa.</p>
+          <p className="text-slate-400 section-subtitle">5 soluções integradas. Um único ecossistema. Transformação completa.</p>
         </div>
 
         {/* Desktop orbital diagram */}
         <div className="hidden lg:block relative w-full max-w-2xl mx-auto aspect-square mb-8">
           {/* Center hub */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-lg z-10 p-4">
-            <img src={logoChordataPrincipal} alt="Chordata" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+            <img src={logoChordataEcossistema} alt="Ecossistema Chordata" className="w-full h-full object-contain" loading="lazy" decoding="async" />
           </div>
 
           {/* Orbit ring */}
@@ -90,7 +84,7 @@ const EcosystemSection = () => {
 
           {/* Satellites */}
           {satellites.map((sat, i) => {
-            const angle = (i * 60 - 90) * (Math.PI / 180);
+            const angle = (i * (360 / satellites.length) - 90) * (Math.PI / 180);
             const radius = 42;
             const x = 50 + radius * Math.cos(angle);
             const y = 50 + radius * Math.sin(angle);

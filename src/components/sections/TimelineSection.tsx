@@ -11,7 +11,8 @@ import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
 const timelineData = [
   {
     ano: '2022',
-    nome: 'Chordata Consultoria e Assessoria',
+    semestre: null,
+    nome: 'Chordata Consultoria',
     descricao:
       'O início de tudo. Fundação da consultoria estratégica em gestão empresarial para o mercado veterinário e pet, em Porto Alegre/RS. O primeiro passo de uma visão que se tornaria um ecossistema completo.',
     logo: logoChordataConsultoria,
@@ -20,6 +21,7 @@ const timelineData = [
   },
   {
     ano: '2023',
+    semestre: null,
     nome: 'Chordata Analytics',
     descricao:
       'Nasce o braço de inteligência de dados. Soluções de Power BI que transformam dados complexos em insights claros, permitindo decisões estratégicas baseadas em números reais.',
@@ -29,6 +31,7 @@ const timelineData = [
   },
   {
     ano: '2024',
+    semestre: '1º sem',
     nome: 'MentAll.Vet',
     descricao:
       'A saúde mental entra no ecossistema. Atendimento psicológico individual, programas corporativos e treinamentos voltados ao bem-estar de equipes veterinárias — porque equipes saudáveis constroem negócios sustentáveis.',
@@ -38,28 +41,40 @@ const timelineData = [
   },
   {
     ano: '2024',
-    nome: 'Início do Planejamento do Evento',
+    semestre: '2º sem',
+    nome: 'VetConnection',
     descricao:
-      'Começa o planejamento da maior plataforma de conexão do mercado veterinário do Sul do Brasil. O que viria a se tornar a VetConnection / Health Meeting Brasil ganha forma e estrutura.',
+      'Começa o planejamento da maior plataforma de conexão do mercado veterinário do Sul do Brasil. O projeto VetConnection / Health Meeting Brasil ganha forma e estrutura.',
     logo: null,
     icon: CalendarCheck,
     destaque: false,
   },
   {
     ano: '2025',
-    nome: 'VetConnection + JurídicoPet Digital',
+    semestre: '1º sem',
+    nome: 'Jurídico Pet Digital',
     descricao:
-      'Ano marcante: realização do evento VetConnection / Health Meeting Brasil (15 mil visitantes, 16 estados, 6 países) e lançamento do JurídicoPet Digital — plataforma de assinatura eletrônica e conformidade jurídica para o setor pet & vet.',
+      'Lançamento do JurídicoPet Digital — plataforma de assinatura eletrônica e conformidade jurídica para o setor pet & vet. Termos de consentimento, contratos e autorizações de forma digital, segura e rastreável.',
+    logo: logoJuridicoPet,
+    icon: Scale,
+    destaque: false,
+  },
+  {
+    ano: '2025',
+    semestre: '2º sem',
+    nome: 'VetConnection Evento',
+    descricao:
+      'Realização do evento VetConnection / Health Meeting Brasil — a maior plataforma de conexão do mercado veterinário do Sul do Brasil, reunindo 15 mil visitantes, 16 estados e 6 países.',
     logo: logoVetconnection,
-    secondaryLogo: logoJuridicoPet,
     icon: PartyPopper,
     destaque: false,
   },
   {
     ano: '2026',
+    semestre: null,
     nome: 'Ecossistema Chordata',
     descricao:
-      'A formação completa do ecossistema integrado. Todas as soluções — consultoria, analytics, saúde mental, eventos e conformidade jurídica — conectadas em uma plataforma única de gestão para o mercado veterinário.',
+      'A consolidação do ecossistema integrado. Todas as soluções — consultoria, analytics, saúde mental, eventos e conformidade jurídica — conectadas em uma plataforma única de gestão para o mercado veterinário.',
     logo: null,
     icon: Layers,
     destaque: true,
@@ -96,6 +111,8 @@ const TimelineItem = ({
   const Icon = item.icon;
   const isFirst = index === 0;
   const isLast = index === timelineData.length - 1;
+  const yearLabel = item.semestre ? `${item.ano} · ${item.semestre}` : item.ano;
+  const yearLabelShort = item.semestre ? `${item.ano.slice(-2)}/${item.semestre.charAt(0)}` : item.ano;
 
   return (
     <div
@@ -137,15 +154,13 @@ const TimelineItem = ({
                   <Icon size={20} className="text-blue-400" />
                 </div>
               )}
-              {'secondaryLogo' in item && item.secondaryLogo && (
-                <img
-                  src={item.secondaryLogo}
-                  alt="Logo secundário"
-                  className="h-8 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                  loading="lazy"
-                />
-              )}
             </div>
+
+            {item.semestre && (
+              <span className="inline-block mb-1 px-2 py-0.5 rounded bg-blue-500/10 text-[10px] font-semibold text-blue-400 uppercase tracking-wide">
+                {item.semestre}
+              </span>
+            )}
 
             <h3 className="font-heading text-base font-semibold text-white mb-1">
               {item.nome}
@@ -162,7 +177,16 @@ const TimelineItem = ({
             z-10 transition-transform duration-200 hover:scale-105
             ${item.destaque ? 'w-14 h-14 ring-2 ring-blue-500/20 ring-offset-2 ring-offset-slate-900' : ''}`}
           >
-            <span className="text-blue-400 font-heading font-bold text-sm">{item.ano}</span>
+            <span className="text-blue-400 font-heading font-bold text-xs leading-none text-center">
+              {item.semestre ? (
+                <>
+                  <span className="block text-sm">{item.ano}</span>
+                  <span className="block text-[8px] text-blue-300/70">{item.semestre}</span>
+                </>
+              ) : (
+                <span className="text-sm">{item.ano}</span>
+              )}
+            </span>
           </div>
         </div>
 
@@ -176,7 +200,16 @@ const TimelineItem = ({
             className={`w-11 h-11 rounded-full bg-slate-800 border-2 border-blue-500 flex items-center justify-center z-10
             ${item.destaque ? 'ring-2 ring-blue-500/20 ring-offset-2 ring-offset-slate-900' : ''}`}
           >
-            <span className="text-blue-400 font-heading font-bold text-xs">{item.ano}</span>
+            <span className="text-blue-400 font-heading font-bold text-[9px] leading-none text-center">
+              {item.semestre ? (
+                <>
+                  <span className="block text-xs">{item.ano}</span>
+                  <span className="block text-[7px] text-blue-300/70">{item.semestre}</span>
+                </>
+              ) : (
+                <span className="text-xs">{item.ano}</span>
+              )}
+            </span>
           </div>
           {index < timelineData.length - 1 && (
             <div className="w-px h-full min-h-[40px] bg-slate-700 mt-2" />
@@ -206,11 +239,15 @@ const TimelineItem = ({
                 <Icon size={16} className="text-blue-400" />
               </div>
             )}
-            {'secondaryLogo' in item && item.secondaryLogo && (
-              <img src={item.secondaryLogo} alt="Logo secundário" className="h-7 w-auto object-contain" loading="lazy" />
-            )}
             <h3 className="font-heading text-sm font-semibold text-white">{item.nome}</h3>
           </div>
+
+          {item.semestre && (
+            <span className="inline-block mb-2 px-2 py-0.5 rounded bg-blue-500/10 text-[10px] font-semibold text-blue-400 uppercase tracking-wide">
+              {item.semestre}
+            </span>
+          )}
+
           <p className="text-xs text-slate-400 leading-relaxed">{item.descricao}</p>
         </div>
       </div>
@@ -239,7 +276,7 @@ const TimelineSection = () => {
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-slate-700" />
 
           {timelineData.map((item, idx) => (
-            <TimelineItem key={item.nome} item={item} index={idx} />
+            <TimelineItem key={`${item.ano}-${item.nome}`} item={item} index={idx} />
           ))}
         </div>
 

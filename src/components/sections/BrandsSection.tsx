@@ -12,30 +12,35 @@ const brands = [
     description: 'Consultoria estratégica em gestão',
     logo: logoChordataConsultoria,
     darkBg: false,
+    url: 'https://chordataconsultoria.com/',
   },
   {
     name: 'Chordata Analytics',
     description: 'Inteligência de dados e Power BI',
     logo: logoAnalytics,
     darkBg: false,
+    url: 'https://chordataanalytics.com.br/',
   },
   {
     name: 'MentAll.Vet',
     description: 'Saúde mental veterinária',
     logo: logoMentall,
-    darkBg: true,
+    darkBg: false,
+    url: 'https://www.mentall.vet/',
   },
   {
     name: 'JurídicoPet Digital',
     description: 'Conformidade jurídica digital',
     logo: logoJuridicoPet,
     darkBg: false,
+    url: 'https://juridicopetdigital.com.br/',
   },
   {
     name: 'VetConnection',
     description: 'Feiras e eventos veterinários',
     logo: logoVetconnection,
-    darkBg: true,
+    darkBg: false,
+    url: 'https://brasilfeiras.vet/',
   },
 ];
 
@@ -58,17 +63,17 @@ const BrandsSection = () => {
 
         <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 stagger-children ${isVisible ? 'visible' : ''}`}>
           {brands.map((brand) => (
-            <div
+            <a
               key={brand.name}
-              className="group flex flex-col items-center text-center"
+              href={brand.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center text-center no-underline"
             >
               <div
-                className={`w-24 h-24 md:w-28 md:h-28 rounded-2xl flex items-center justify-center p-4 mb-3 transition-all duration-200
+                className="w-24 h-24 md:w-28 md:h-28 rounded-2xl flex items-center justify-center p-4 mb-3 transition-all duration-200
                   border shadow-sm group-hover:shadow-md group-hover:scale-105
-                  ${brand.darkBg
-                    ? 'bg-slate-900 border-slate-800 group-hover:border-slate-700'
-                    : 'bg-white border-slate-200 group-hover:border-blue-300'
-                  }`}
+                  bg-white border-slate-200 group-hover:border-blue-300"
               >
                 <img
                   src={brand.logo}
@@ -78,13 +83,13 @@ const BrandsSection = () => {
                   decoding="async"
                 />
               </div>
-              <h3 className="font-heading text-xs md:text-sm font-semibold text-slate-800 mb-0.5">
+              <h3 className="font-heading text-xs md:text-sm font-semibold text-slate-800 mb-0.5 group-hover:text-blue-500 transition-colors duration-200">
                 {brand.name}
               </h3>
               <p className="text-[10px] md:text-xs text-slate-500 leading-tight">
                 {brand.description}
               </p>
-            </div>
+            </a>
           ))}
         </div>
       </div>
