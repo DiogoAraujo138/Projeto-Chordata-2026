@@ -14,36 +14,33 @@ const ProblemSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-20 md:py-32 bg-chordata-navy relative overflow-hidden">
-      {/* Gradient accent */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chordata-teal/30 to-transparent" />
-
-      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
-        <div className="text-center mb-14">
+    <section className="py-24 md:py-36 bg-slate-900">
+      <div ref={ref} className={`container mx-auto px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+        <div className="text-center mb-16">
           <span className="section-label">— Por que Chordata? —</span>
           <h2 className="section-title text-white mb-4">
             Gerenciar uma clínica ou hospital veterinário vai muito além da medicina.
           </h2>
-          <p className="text-white/55 section-subtitle">Você precisa lidar com:</p>
+          <p className="text-slate-400 section-subtitle">Você precisa lidar com:</p>
         </div>
 
         <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children ${isVisible ? 'visible' : ''}`}>
           {problems.map((p, i) => (
             <div
               key={i}
-              className="card-interactive p-6 group cursor-default"
+              className="card-dark p-6 group cursor-default"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-chordata-teal/10 flex items-center justify-center shrink-0 group-hover:bg-chordata-teal/20 group-hover:scale-110 transition-all duration-300">
-                  <p.icon className="text-chordata-teal" size={22} />
+                <div className="w-11 h-11 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0 group-hover:bg-blue-500/15 transition-colors duration-200">
+                  <p.icon className="text-blue-400" size={20} />
                 </div>
-                <p className="text-white font-inter font-medium text-sm md:text-base">{p.title}</p>
+                <p className="text-slate-200 font-medium text-sm">{p.title}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-chordata-teal font-inter mt-10 text-base md:text-lg opacity-90">
+        <p className="text-center text-blue-400 mt-12 text-base">
           Por isso, criamos um ecossistema onde cada solução se potencializa com as outras.
         </p>
       </div>

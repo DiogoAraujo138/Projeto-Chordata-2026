@@ -51,10 +51,10 @@ const AnimatedCounter = ({ target, prefix = '', suffix = '', label, duration = 2
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-sora text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-chordata-teal to-chordata-green mb-2 tabular-nums">
+      <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-blue-500 mb-2 tabular-nums">
         {prefix}{count.toLocaleString('pt-BR')}{suffix}
       </div>
-      <div className="text-white/75 font-inter text-xs sm:text-sm md:text-base">{label}</div>
+      <div className="text-slate-400 text-xs sm:text-sm">{label}</div>
     </div>
   );
 };

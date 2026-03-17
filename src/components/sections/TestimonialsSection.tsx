@@ -40,18 +40,15 @@ const TestimonialsSection = () => {
     setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
   }, []);
 
-  // Auto-advance
   useEffect(() => {
     const timer = setInterval(next, 7000);
     return () => clearInterval(timer);
   }, [next]);
 
   return (
-    <section className="py-20 md:py-32 bg-chordata-navy relative overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chordata-teal/20 to-transparent" />
-
-      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-4xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
-        <div className="text-center mb-14">
+    <section className="py-24 md:py-36 bg-slate-800">
+      <div ref={ref} className={`container mx-auto px-6 max-w-4xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+        <div className="text-center mb-16">
           <span className="section-label">— Depoimentos —</span>
           <h2 className="section-title text-white">
             O que nossos clientes e parceiros estão falando de nós
@@ -59,10 +56,10 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="relative">
-          <div className="glass-card p-8 md:p-12 text-center min-h-[280px] flex flex-col items-center justify-center">
-            <Quote className="text-chordata-teal/25 mb-6" size={40} />
+          <div className="card-dark p-8 md:p-12 text-center min-h-[280px] flex flex-col items-center justify-center">
+            <Quote className="text-blue-500/20 mb-6" size={36} />
             <p
-              className={`text-white/90 font-inter text-base sm:text-lg md:text-xl leading-relaxed mb-8 italic max-w-2xl ${
+              className={`text-slate-200 text-base sm:text-lg md:text-xl leading-relaxed mb-8 italic max-w-2xl ${
                 direction === 'right' ? 'animate-fade-in-right' : 'animate-fade-in-left'
               }`}
               key={current}
@@ -70,8 +67,8 @@ const TestimonialsSection = () => {
               “{testimonials[current].text}”
             </p>
             <div className="animate-fade-in" key={`name-${current}`}>
-              <p className="font-sora font-bold text-white text-lg">{testimonials[current].name}</p>
-              <p className="text-chordata-teal font-inter text-sm mt-0.5">{testimonials[current].role}</p>
+              <p className="font-heading font-bold text-white text-lg">{testimonials[current].name}</p>
+              <p className="text-blue-400 text-sm mt-1">{testimonials[current].role}</p>
             </div>
           </div>
 
@@ -79,10 +76,10 @@ const TestimonialsSection = () => {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
+              className="w-10 h-10 rounded-lg bg-slate-700 border border-slate-600 flex items-center justify-center text-slate-300 hover:bg-slate-600 hover:text-white transition-colors duration-200"
               aria-label="Anterior"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
             </button>
 
             <div className="flex gap-2">
@@ -93,7 +90,7 @@ const TestimonialsSection = () => {
                     setDirection(i > current ? 'right' : 'left');
                     setCurrent(i);
                   }}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${i === current ? 'bg-chordata-teal w-8' : 'bg-white/20 w-2.5 hover:bg-white/40'}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${i === current ? 'bg-blue-500 w-8' : 'bg-slate-600 w-2 hover:bg-slate-500'}`}
                   aria-label={`Depoimento ${i + 1}`}
                 />
               ))}
@@ -101,10 +98,10 @@ const TestimonialsSection = () => {
 
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
+              className="w-10 h-10 rounded-lg bg-slate-700 border border-slate-600 flex items-center justify-center text-slate-300 hover:bg-slate-600 hover:text-white transition-colors duration-200"
               aria-label="Próximo"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </button>
           </div>
         </div>

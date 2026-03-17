@@ -12,7 +12,6 @@ const ContactSection = () => {
     e.preventDefault();
     if (form.name && form.email && form.message) {
       setLoading(true);
-      // Simulating API call
       setTimeout(() => {
         setLoading(false);
         setSubmitted(true);
@@ -21,31 +20,28 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contato" className="py-20 md:py-32 bg-chordata-navy relative overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chordata-teal/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-chordata-teal/[0.03] rounded-full blur-[120px] pointer-events-none" />
-
-      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
-        <div className="text-center mb-14">
+    <section id="contato" className="py-24 md:py-36 bg-slate-900">
+      <div ref={ref} className={`container mx-auto px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+        <div className="text-center mb-16">
           <span className="section-label">— Contato —</span>
           <h2 className="section-title text-white">
             Vamos começar a sua transformação?
           </h2>
-          <p className="text-white/55 section-subtitle max-w-2xl mx-auto">
+          <p className="text-slate-400 section-subtitle max-w-2xl mx-auto">
             Se você é gestor de uma clínica ou hospital veterinário e quer reduzir custos, reter talentos, garantir conformidade jurídica e tomar decisões baseadas em dados, o Ecossistema Chordata é para você.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Form */}
-          <div className="glass-card p-6 md:p-8">
+          <div className="card-dark p-6 md:p-8">
             {submitted ? (
               <div className="text-center py-12 animate-scale-in">
-                <div className="w-16 h-16 rounded-full bg-chordata-teal/20 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="text-chordata-teal" size={32} />
+                <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="text-blue-500" size={28} />
                 </div>
-                <h3 className="font-sora font-bold text-white text-xl mb-2">Mensagem enviada!</h3>
-                <p className="text-white/55 font-inter text-sm">Entraremos em contato em breve.</p>
+                <h3 className="font-heading font-bold text-white text-xl mb-2">Mensagem enviada!</h3>
+                <p className="text-slate-400 text-sm">Entraremos em contato em breve.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -61,9 +57,9 @@ const ContactSection = () => {
                     required={field.required}
                     value={form[field.name as keyof typeof form]}
                     onChange={(e) => setForm({ ...form, [field.name]: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 font-inter text-sm
-                      focus:outline-none focus:border-chordata-teal/60 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_hsla(180,50%,50%,0.1)]
-                      transition-all duration-300"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3.5 text-white placeholder:text-slate-500 text-sm
+                      focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20
+                      transition-all duration-200"
                   />
                 ))}
                 <textarea
@@ -72,17 +68,17 @@ const ContactSection = () => {
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder:text-white/30 font-inter text-sm
-                    focus:outline-none focus:border-chordata-teal/60 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_hsla(180,50%,50%,0.1)]
-                    transition-all duration-300 resize-none"
+                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3.5 text-white placeholder:text-slate-500 text-sm
+                    focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/20
+                    transition-all duration-200 resize-none"
                 />
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-primary w-full py-3.5 flex items-center justify-center gap-2 text-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="btn-primary w-full py-3.5 flex items-center justify-center gap-2 text-sm disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {loading ? (
-                    <div className="w-5 h-5 border-2 border-chordata-navy/30 border-t-chordata-navy rounded-full animate-spin" />
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
                     <>
                       <Send size={16} />
@@ -99,36 +95,36 @@ const ContactSection = () => {
             {[
               { icon: Mail, href: 'mailto:contato@chordataconsultoria.com', text: 'contato@chordataconsultoria.com', isLink: true },
             ].map((item) => (
-              <a key={item.text} href={item.href} className="flex items-center gap-4 text-white/75 hover:text-white transition-colors group">
-                <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-chordata-teal/10 group-hover:border-chordata-teal/30 transition-all duration-300">
-                  <item.icon size={18} className="text-chordata-teal" />
+              <a key={item.text} href={item.href} className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
+                <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:border-blue-500/30 transition-colors duration-200">
+                  <item.icon size={18} className="text-blue-400" />
                 </div>
-                <span className="font-inter text-sm">{item.text}</span>
+                <span className="text-sm">{item.text}</span>
               </a>
             ))}
 
-            <div className="flex items-center gap-4 text-white/75">
-              <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                <Phone size={18} className="text-chordata-teal" />
+            <div className="flex items-center gap-4 text-slate-300">
+              <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
+                <Phone size={18} className="text-blue-400" />
               </div>
-              <div className="font-inter text-sm space-y-0.5">
+              <div className="text-sm space-y-0.5">
                 <p>Mikael Cattani: (51) 97622-7070</p>
                 <p>Thales Altieri: (51) 91196-578</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-white/75">
-              <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                <MapPin size={18} className="text-chordata-teal" />
+            <div className="flex items-center gap-4 text-slate-300">
+              <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
+                <MapPin size={18} className="text-blue-400" />
               </div>
-              <span className="font-inter text-sm">Instituto Caldeira — Tv. São José, 455, Navegantes, Porto Alegre - RS</span>
+              <span className="text-sm">Instituto Caldeira — Tv. São José, 455, Navegantes, Porto Alegre - RS</span>
             </div>
 
-            <a href="https://chordataconsultoria.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-white/75 hover:text-white transition-colors group">
-              <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-chordata-teal/10 group-hover:border-chordata-teal/30 transition-all duration-300">
-                <Globe size={18} className="text-chordata-teal" />
+            <a href="https://chordataconsultoria.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
+              <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:border-blue-500/30 transition-colors duration-200">
+                <Globe size={18} className="text-blue-400" />
               </div>
-              <span className="font-inter text-sm">chordataconsultoria.com</span>
+              <span className="text-sm">chordataconsultoria.com</span>
             </a>
 
             <div className="flex gap-3 pt-4">
@@ -141,9 +137,9 @@ const ContactSection = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50
-                    hover:bg-chordata-teal/10 hover:border-chordata-teal/30 hover:text-chordata-teal
-                    transition-all duration-300"
+                  className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400
+                    hover:border-blue-500/30 hover:text-blue-400
+                    transition-colors duration-200"
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -154,8 +150,8 @@ const ContactSection = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-16 pt-8 border-t border-white/10 text-center">
-          <p className="text-white/35 font-inter text-sm">© 2025 Chordata Consultoria · Todos os direitos reservados</p>
+        <div className="mt-20 pt-8 border-t border-slate-800 text-center">
+          <p className="text-slate-500 text-sm">© 2025 Chordata Consultoria · Todos os direitos reservados</p>
         </div>
       </div>
     </section>

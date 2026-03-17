@@ -14,7 +14,6 @@ const stateLabels: Record<string, string> = {
   AP: 'Amapá',
 };
 
-// Simplified Brazil state paths
 const statePaths: Record<string, string> = {
   AP: 'M280,60 L300,40 L320,55 L315,80 L295,90 Z',
   AM: 'M120,100 L220,80 L280,90 L270,160 L200,180 L120,160 Z',
@@ -49,25 +48,22 @@ const LocationSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="atuacao" className="py-20 md:py-32 bg-chordata-navy relative overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chordata-teal/20 to-transparent" />
-
-      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-6xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
-        <div className="text-center mb-14">
+    <section id="atuacao" className="py-24 md:py-36 bg-slate-900">
+      <div ref={ref} className={`container mx-auto px-6 max-w-6xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+        <div className="text-center mb-16">
           <span className="section-label">— Onde Atuamos —</span>
           <h2 className="section-title text-white">
             Presença Nacional & Impacto
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Brazil Map */}
           <div className="flex justify-center">
             <div className="relative w-full max-w-md">
               <svg
                 viewBox="30 10 500 560"
-                className="w-full h-auto drop-shadow-2xl"
-                xmlns="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/United_States_geographical_collation.svg/960px-United_States_geographical_collation.svg.png"
+                className="w-full h-auto"
               >
                 {Object.entries(statePaths).map(([code, d]) => {
                   const isActive = activeStates.includes(code);
@@ -75,10 +71,10 @@ const LocationSection = () => {
                     <g key={code}>
                       <path
                         d={d}
-                        fill={isActive ? 'hsl(180, 50%, 50%)' : 'hsl(224, 53%, 30%)'}
-                        stroke="hsl(224, 53%, 20%)"
+                        fill={isActive ? '#3B82F6' : '#1E293B'}
+                        stroke="#0F172A"
                         strokeWidth="1.5"
-                        className={`transition-all duration-300 ${isActive ? 'hover:brightness-125 cursor-pointer hover:drop-shadow-[0_0_8px_hsla(180,50%,50%,0.5)]' : 'opacity-50'}`}
+                        className={`transition-all duration-200 ${isActive ? 'hover:brightness-110 cursor-pointer' : 'opacity-50'}`}
                       />
                       {isActive && (
                         <text
@@ -91,7 +87,6 @@ const LocationSection = () => {
                           fontWeight="700"
                           fontFamily="Inter, sans-serif"
                           className="pointer-events-none select-none"
-                          style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
                         >
                           {code}
                         </text>
@@ -102,13 +97,13 @@ const LocationSection = () => {
               </svg>
 
               {/* Legend */}
-              <div className="mt-6 flex flex-wrap gap-2 justify-center">
+              <div className="mt-8 flex flex-wrap gap-2 justify-center">
                 {activeStates.map((code) => (
                   <span
                     key={code}
-                    className="inline-flex items-center gap-1.5 bg-chordata-teal/10 text-chordata-teal text-xs font-inter font-medium px-3 py-1.5 rounded-full border border-chordata-teal/20 transition-colors hover:bg-chordata-teal/20"
+                    className="inline-flex items-center gap-1.5 bg-slate-800 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-md border border-slate-700"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-chordata-teal" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                     {stateLabels[code]}
                   </span>
                 ))}
@@ -117,27 +112,27 @@ const LocationSection = () => {
           </div>
 
           {/* Impact Numbers */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             <div>
-              <h3 className="font-sora font-bold text-white text-xl mb-2">
+              <h3 className="font-heading font-bold text-white text-xl mb-3">
                 Nosso Impacto em Números
               </h3>
-              <p className="font-inter text-white/55 text-sm leading-relaxed">
+              <p className="text-slate-400 text-sm leading-relaxed">
                 Resultados concretos da nossa atuação no mercado veterinário brasileiro.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:gap-6">
-              <div className="glass-card p-6 text-center hover:bg-white/[0.08] transition-colors">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="card-dark p-6 text-center">
                 <AnimatedCounter target={2000} prefix="+" label="Pessoas Movimentadas" />
               </div>
-              <div className="glass-card p-6 text-center hover:bg-white/[0.08] transition-colors">
+              <div className="card-dark p-6 text-center">
                 <AnimatedCounter target={60} prefix="+" label="Projetos de Consultoria" />
               </div>
-              <div className="glass-card p-6 text-center hover:bg-white/[0.08] transition-colors">
+              <div className="card-dark p-6 text-center">
                 <AnimatedCounter target={300} prefix="+" label="Pessoas Capacitadas" />
               </div>
-              <div className="glass-card p-6 text-center hover:bg-white/[0.08] transition-colors">
+              <div className="card-dark p-6 text-center">
                 <AnimatedCounter target={8} label="Estados Atendidos" />
               </div>
             </div>

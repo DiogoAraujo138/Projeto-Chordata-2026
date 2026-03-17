@@ -32,11 +32,9 @@ const ServicesSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="servicos" className="py-20 md:py-32 bg-chordata-navy relative overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-chordata-teal/20 to-transparent" />
-
-      <div ref={ref} className={`container mx-auto px-4 sm:px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
-        <div className="text-center mb-14">
+    <section id="servicos" className="py-24 md:py-36 bg-slate-900">
+      <div ref={ref} className={`container mx-auto px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
+        <div className="text-center mb-16">
           <span className="section-label">— Nossos Serviços —</span>
           <h2 className="section-title text-white">
             Nossos Serviços
@@ -44,15 +42,15 @@ const ServicesSection = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {tabs.map((tab, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-inter font-medium transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 active === i
-                  ? 'bg-chordata-teal text-chordata-navy shadow-[0_4px_16px_hsla(180,50%,50%,0.3)]'
-                  : 'bg-white/5 text-white/65 hover:bg-white/10 hover:text-white/90'
+                  ? 'bg-blue-500 text-white shadow-md'
+                  : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200'
               }`}
             >
               {tab.label}
@@ -63,9 +61,9 @@ const ServicesSection = () => {
         {/* Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {tabs[active].items.map((item, j) => (
-            <div key={`${active}-${j}`} className="card-interactive p-6 animate-fade-in" style={{ animationDelay: `${j * 80}ms` }}>
-              <h3 className="font-sora font-bold text-white text-lg mb-2">{item.title}</h3>
-              <p className="text-white/55 font-inter text-sm leading-relaxed">{item.desc}</p>
+            <div key={`${active}-${j}`} className="card-dark p-6 animate-fade-in" style={{ animationDelay: `${j * 80}ms` }}>
+              <h3 className="font-heading font-bold text-white text-lg mb-2">{item.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
