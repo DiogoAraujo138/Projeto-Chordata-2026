@@ -1,64 +1,66 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useState, useRef, useEffect } from 'react';
-import { Rocket, BarChart3, Globe, Cpu, Lightbulb, Scale } from 'lucide-react';
+import { Rocket, BarChart3, Heart, CalendarCheck, Scale, Layers, PartyPopper } from 'lucide-react';
 
 import logoChordataPrincipal from '@/assets/logos/chordata-principal.png';
 import logoAnalytics from '@/assets/logos/chordata-analytics.png';
+import logoMentallvet from '@/assets/logos/mentallvet.png';
+import logoVetconnection from '@/assets/logos/vetconnection.png';
 
 const timelineData = [
   {
-    ano: 2022,
+    ano: '2022',
     nome: 'Chordata Consultoria e Assessoria',
     descricao:
-      'Empresa principal do ecossistema. Consultoria estratégica em gestão empresarial para o mercado veterinário e pet, fundada em Porto Alegre/RS.',
+      'O início de tudo. Fundação da consultoria estratégica em gestão empresarial para o mercado veterinário e pet, em Porto Alegre/RS. O primeiro passo de uma visão que se tornaria um ecossistema completo.',
     logo: logoChordataPrincipal,
     icon: Rocket,
     destaque: true,
   },
   {
-    ano: 2023,
+    ano: '2023',
     nome: 'Chordata Analytics',
     descricao:
-      'Soluções de Power BI para o mercado veterinário. Transforma dados complexos em insights claros para decisões assertivas.',
+      'Nasce o braço de inteligência de dados. Soluções de Power BI que transformam dados complexos em insights claros, permitindo decisões estratégicas baseadas em números reais.',
     logo: logoAnalytics,
     icon: BarChart3,
     destaque: false,
   },
   {
-    ano: 2024,
-    nome: 'Chordata Digital',
+    ano: '2024',
+    nome: 'MentAll.Vet',
     descricao:
-      'Braço digital do ecossistema, voltado a soluções digitais inovadoras para o setor pet & vet.',
-    logo: null,
-    icon: Globe,
+      'A saúde mental entra no ecossistema. Atendimento psicológico individual, programas corporativos e treinamentos voltados ao bem-estar de equipes veterinárias — porque equipes saudáveis constroem negócios sustentáveis.',
+    logo: logoMentallvet,
+    icon: Heart,
     destaque: false,
   },
   {
-    ano: 2024,
-    nome: 'Chordata Tech',
+    ano: '2024',
+    nome: 'Início do Planejamento do Evento',
     descricao:
-      'Braço de tecnologia focado no desenvolvimento de soluções tecnológicas para o setor veterinário.',
+      'Começa o planejamento da maior plataforma de conexão do mercado veterinário do Sul do Brasil. O que viria a se tornar a VetConnection / Health Meeting Brasil ganha forma e estrutura.',
     logo: null,
-    icon: Cpu,
+    icon: CalendarCheck,
     destaque: false,
   },
   {
-    ano: 2024,
-    nome: 'Chordata Ventures',
+    ano: '2025',
+    nome: 'VetConnection + JurídicoPet Digital',
     descricao:
-      'Venture builder que cria e desenvolve empresas de tecnologia, construindo um ecossistema de soluções inovadoras para o mercado pet & vet.',
-    logo: null,
-    icon: Lightbulb,
+      'Ano marcante: realização do evento VetConnection / Health Meeting Brasil (15 mil visitantes, 16 estados, 6 países) e lançamento do JurídicoPet Digital — plataforma de assinatura eletrônica e conformidade jurídica para o setor pet & vet.',
+    logo: logoVetconnection,
+    icon: PartyPopper,
     destaque: false,
   },
   {
-    ano: 2025,
-    nome: 'JurídicoPet Digital',
+    ano: '2026',
+    nome: 'Ecossistema Chordata',
     descricao:
-      'Plataforma de assinatura eletrônica exclusiva para o setor pet & vet. Contratos, termos de consentimento e documentos digitais com validade jurídica.',
+      'A formação completa do ecossistema integrado. Todas as soluções — consultoria, analytics, saúde mental, eventos e conformidade jurídica — conectadas em uma plataforma única de gestão para o mercado veterinário.',
     logo: null,
-    icon: Scale,
-    destaque: false,
+    icon: Layers,
+    destaque: true,
   },
 ];
 
@@ -90,6 +92,8 @@ const TimelineItem = ({
 
   const isLeft = index % 2 === 0;
   const Icon = item.icon;
+  const isFirst = index === 0;
+  const isLast = index === timelineData.length - 1;
 
   return (
     <div
@@ -107,9 +111,14 @@ const TimelineItem = ({
             hover:bg-slate-800/70 hover:border-slate-600/50 transition-all duration-200
             ${item.destaque ? 'ring-1 ring-blue-500/20' : ''}`}
           >
-            {item.destaque && (
+            {isFirst && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-blue-500 text-[10px] font-bold uppercase tracking-wider text-white">
                 Ponto de Partida
+              </span>
+            )}
+            {isLast && (
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-blue-500 text-[10px] font-bold uppercase tracking-wider text-white">
+                Ecossistema Completo
               </span>
             )}
 
@@ -168,9 +177,14 @@ const TimelineItem = ({
           className={`flex-1 p-5 rounded-xl bg-slate-800/50 border border-slate-700/50
           ${item.destaque ? 'ring-1 ring-blue-500/20' : ''}`}
         >
-          {item.destaque && (
+          {isFirst && (
             <span className="inline-block mb-2 px-3 py-0.5 rounded-full bg-blue-500 text-[10px] font-bold uppercase tracking-wider text-white">
               Ponto de Partida
+            </span>
+          )}
+          {isLast && (
+            <span className="inline-block mb-2 px-3 py-0.5 rounded-full bg-blue-500 text-[10px] font-bold uppercase tracking-wider text-white">
+              Ecossistema Completo
             </span>
           )}
 

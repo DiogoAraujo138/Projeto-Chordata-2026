@@ -1,11 +1,36 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const team = [
-  { initials: 'TA', name: 'Thales Altieri', role: 'Co-Fundador, Diretor e Consultor' },
-  { initials: 'MC', name: 'Mikael Cattani', role: 'Co-Fundador, Diretor e Consultor' },
-  { initials: 'EM', name: 'Eduardo Monteiro', role: 'Consultor Associado' },
-  { initials: 'EM', name: 'Eliz Modena', role: 'Psicóloga e Consultora Organizacional de Clínicas e Hospitais Veterinários' },
-  { initials: 'DA', name: 'Diogo Araújo', role: 'Analista de Dados' },
+  {
+    initials: 'TA',
+    name: 'Thales Altieri',
+    role: 'Co-Fundador, Diretor e Consultor',
+    image: null as string | null,
+  },
+  {
+    initials: 'MC',
+    name: 'Mikael Cattani',
+    role: 'Co-Fundador, Diretor e Consultor',
+    image: null as string | null,
+  },
+  {
+    initials: 'EM',
+    name: 'Eduardo Monteiro',
+    role: 'Consultor Associado',
+    image: null as string | null,
+  },
+  {
+    initials: 'EM',
+    name: 'Eliz Modena',
+    role: 'Psicóloga e Consultora Organizacional de Clínicas e Hospitais Veterinários',
+    image: null as string | null,
+  },
+  {
+    initials: 'DA',
+    name: 'Diogo Araújo',
+    role: 'Analista de Dados',
+    image: null as string | null,
+  },
 ];
 
 const TeamSection = () => {
@@ -27,8 +52,20 @@ const TeamSection = () => {
         <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 stagger-children ${isVisible ? 'visible' : ''}`}>
           {team.map((m) => (
             <div key={m.name} className="card-clean p-6 text-center group">
-              <div className="w-16 h-16 md:w-18 md:h-18 rounded-full bg-slate-900 mx-auto mb-4 flex items-center justify-center">
-                <span className="font-heading text-base md:text-lg font-bold text-white">{m.initials}</span>
+              <div className="w-18 h-18 md:w-20 md:h-20 rounded-full mx-auto mb-4 overflow-hidden flex items-center justify-center bg-slate-900 ring-2 ring-slate-200 group-hover:ring-blue-300 transition-all duration-200">
+                {m.image ? (
+                  <img
+                    src={m.image}
+                    alt={m.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span className="font-heading text-lg md:text-xl font-bold text-white">
+                    {m.initials}
+                  </span>
+                )}
               </div>
               <h3 className="font-heading font-bold text-slate-900 text-sm mb-1">{m.name}</h3>
               <p className="text-slate-500 text-xs leading-relaxed">{m.role}</p>
