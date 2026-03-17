@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 import chordataConsultoria from '@/assets/logos/chordata-consultoria.png';
+import chordataLogoWhite from '@/assets/logos/chordata-logo-white.png';
 import chordataAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
 import mentall from '@/assets/logos/mentall.png';
 import vetconnection from '@/assets/logos/vetconnection-new.png';
@@ -8,7 +9,8 @@ import juridicoPet from '@/assets/logos/juridico-pet.png';
 import chordataSimboloSolido from '@/assets/logos/chordata-simbolo-solido.png';
 
 const logoMap = {
-  principal: chordataConsultoria,
+  principal: chordataLogoWhite,
+  'principal-blue': chordataConsultoria,
   analytics: chordataAnalytics,
   mentallvet: mentall,
   vetconnection: vetconnection,
