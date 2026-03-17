@@ -1,51 +1,70 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { TrendingUp, Heart, BarChart3, Smartphone, Shield, Network } from 'lucide-react';
+import { Shield } from 'lucide-react';
+import logoChordataPrincipal from '@/assets/logos/chordata-principal.png';
+import logoMentallvet from '@/assets/logos/mentallvet.png';
+import logoAnalytics from '@/assets/logos/chordata-analytics.jpg';
+import logoVetconnection from '@/assets/logos/vetconnection.png';
+import logoDescomplicavet from '@/assets/logos/descomplicavet.png';
 
 const satellites = [
   {
     name: 'Chordata Consultoria',
     tagline: 'Estratégia e Gestão',
     color: 'hsl(216 56% 41%)',
-    icon: TrendingUp,
+    logo: logoChordataPrincipal,
     desc: 'Consultoria estratégica especializada em gestão de clínicas e hospitais veterinários. Análise de processos, otimização operacional, desenvolvimento de equipes e planos estratégicos customizados. É o núcleo que integra todas as outras soluções.',
   },
   {
     name: 'MentAll.Vet',
     tagline: 'Saúde Mental Veterinária',
     color: 'hsl(90 52% 51%)',
-    icon: Heart,
+    logo: logoMentallvet,
     desc: 'Equipes Saudáveis Constroem Negócios Sustentáveis. Atendimento psicológico individual, programas corporativos de gestão de equipes e treinamentos em saúde mental. Resultado: redução de rotatividade em até 30%, maior engajamento e clima organizacional melhorado.',
   },
   {
     name: 'Chordata Analytics',
     tagline: 'Inteligência de Dados',
     color: 'hsl(180 50% 50%)',
-    icon: BarChart3,
+    logo: logoAnalytics,
     desc: 'Dados transformados em decisões. Nossa plataforma de inteligência de dados transforma métricas em estratégia em tempo real. O que está funcionando e o que precisa mudar, decidindo com números, não com intuição.',
   },
   {
     name: 'DescomplicaVet',
     tagline: 'Teleconsultoria e Educação',
     color: 'hsl(42 92% 63%)',
-    icon: Smartphone,
+    logo: logoDescomplicavet,
     desc: 'Teleconsultoria e educação continuada ao alcance de um clique. Aplicativo que conecta sua equipe com especialistas veterinários 24/7. Auxílio em diagnósticos, interpretação de exames, protocolos clínicos atualizados.',
   },
   {
     name: 'JurídicoPet Digital',
     tagline: 'Conformidade Jurídica',
     color: 'hsl(261 33% 47%)',
-    icon: Shield,
+    logo: null,
     desc: 'Conformidade jurídica sem burocracia. Assinatura eletrônica segura e válida para documentos veterinários. Termos de consentimento, contratos, autorizações — tudo digital, seguro e rastreável.',
   },
   {
     name: 'VetConnection',
     tagline: 'Feira e Eventos',
     color: 'hsl(200 50% 45%)',
-    icon: Network,
+    logo: logoVetconnection,
     desc: 'A maior plataforma de conexão do mercado veterinário do Sul do Brasil. Dos criadores da Health Meeting Brasil (15 mil visitantes, 16 estados, 6 países), reunindo profissionais, estudantes, gestores e a indústria vet e pet.',
   },
 ];
+
+const SatelliteIcon = ({ sat, size, selected }: { sat: typeof satellites[0]; size: number; selected: boolean }) => {
+  if (sat.logo) {
+    return (
+      <img
+        src={sat.logo}
+        alt={sat.name}
+        className="object-contain rounded-lg"
+        style={{ width: size, height: size }}
+      />
+    );
+  }
+  return <Shield size={size} style={{ color: selected ? 'white' : sat.color }} />;
+};
 
 const EcosystemSection = () => {
   const [selected, setSelected] = useState<number | null>(null);
@@ -67,11 +86,8 @@ const EcosystemSection = () => {
         {/* Desktop orbital diagram */}
         <div className="hidden lg:block relative w-full max-w-2xl mx-auto aspect-square mb-8">
           {/* Center hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-chordata-navy border-2 border-chordata-teal/40 flex items-center justify-center orbit-glow z-10">
-            <div className="text-center">
-              <p className="font-sora text-white font-bold text-sm">Ecossistema</p>
-              <p className="font-sora text-chordata-teal font-bold text-sm">Chordata</p>
-            </div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full bg-white border-2 border-chordata-teal/40 flex items-center justify-center orbit-glow z-10 p-4">
+            <img src={logoChordataPrincipal} alt="Chordata" className="w-full h-full object-contain" />
           </div>
 
           {/* Orbit ring */}
@@ -94,15 +110,21 @@ const EcosystemSection = () => {
                   left: `${x}%`,
                   top: `${y}%`,
                   borderColor: sat.color,
-                  backgroundColor: selected === i ? sat.color : `${sat.color}22`,
+                  backgroundColor: selected === i ? sat.color : sat.logo ? 'white' : `${sat.color}22`,
                 }}
                 onClick={() => setSelected(selected === i ? null : i)}
               >
-                <sat.icon size={24} style={{ color: selected === i ? 'white' : sat.color }} />
-                <span className={`text-[10px] font-sora font-semibold text-center leading-tight px-1 ${selected === i ? 'text-white' : ''}`}
-                  style={{ color: selected === i ? 'white' : sat.color }}>
-                  {sat.name}
-                </span>
+                {sat.logo ? (
+                  <img src={sat.logo} alt={sat.name} className="w-20 h-16 object-contain rounded" />
+                ) : (
+                  <>
+                    <Shield size={24} style={{ color: selected === i ? 'white' : sat.color }} />
+                    <span className="text-[10px] font-sora font-semibold text-center leading-tight px-1"
+                      style={{ color: selected === i ? 'white' : sat.color }}>
+                      {sat.name}
+                    </span>
+                  </>
+                )}
               </button>
             );
           })}
@@ -128,8 +150,9 @@ const EcosystemSection = () => {
               onClick={() => setSelected(selected === i ? null : i)}
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${sat.color}22` }}>
-                  <sat.icon size={20} style={{ color: sat.color }} />
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden"
+                  style={{ backgroundColor: sat.logo ? 'white' : `${sat.color}22` }}>
+                  <SatelliteIcon sat={sat} size={sat.logo ? 40 : 20} selected={selected === i} />
                 </div>
                 <div>
                   <h3 className="font-sora font-bold text-sm text-white">{sat.name}</h3>
