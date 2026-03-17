@@ -10,7 +10,7 @@ import MethodSection from '@/components/sections/MethodSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import LocationSection from '@/components/sections/LocationSection';
 
-import ClientsSection from '@/components/sections/ClientsSection';
+import TimelineSection from '@/components/sections/TimelineSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import TeamSection from '@/components/sections/TeamSection';
 import ContactSection from '@/components/sections/ContactSection';
@@ -29,7 +29,7 @@ const Index = () => {
         <ServicesSection />
         <LocationSection />
         
-        <ClientsSection />
+        <TimelineSection />
         <TestimonialsSection />
         <TeamSection />
         <ContactSection />

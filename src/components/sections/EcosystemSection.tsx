@@ -82,7 +82,7 @@ const EcosystemSection = () => {
         <div className="text-center mb-14">
           <span className="section-label">— O Ecossistema —</span>
           <h2 className="section-title text-white">
-            Gestão 360° para o Mercado Veterinário
+            Gestão Integrada para o Mercado Veterinário
           </h2>
           <p className="text-white/55 section-subtitle">6 soluções integradas. Um único ecossistema. Transformação completa.</p>
         </div>

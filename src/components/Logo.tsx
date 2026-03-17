@@ -24,7 +24,7 @@ const sizeMap: Record<LogoSize, { width: number; height: number; className: stri
   md: { width: 40, height: 40, className: 'h-10 w-auto' },
   lg: { width: 64, height: 64, className: 'h-16 w-auto' },
   xl: { width: 80, height: 80, className: 'h-20 w-auto' },
-  hero: { width: 120, height: 120, className: 'h-16 md:h-20 w-auto' },
+  hero: { width: 200, height: 200, className: 'h-28 sm:h-32 md:h-40 lg:h-44 w-auto' },
 };
 
 interface LogoProps {
