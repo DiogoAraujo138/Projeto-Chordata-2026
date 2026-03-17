@@ -9,7 +9,7 @@ import EcosystemSection from '@/components/sections/EcosystemSection';
 import MethodSection from '@/components/sections/MethodSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import LocationSection from '@/components/sections/LocationSection';
-import ImpactSection from '@/components/sections/ImpactSection';
+
 import ClientsSection from '@/components/sections/ClientsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import TeamSection from '@/components/sections/TeamSection';
@@ -28,7 +28,7 @@ const Index = () => {
         <MethodSection />
         <ServicesSection />
         <LocationSection />
-        <ImpactSection />
+        
         <ClientsSection />
         <TestimonialsSection />
         <TeamSection />
