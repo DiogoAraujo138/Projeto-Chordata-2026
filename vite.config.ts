@@ -19,4 +19,18 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: "es2020",
+    minify: "esbuild",
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          ui: ["lucide-react", "class-variance-authority", "clsx", "tailwind-merge"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 500,
+  },
 }));

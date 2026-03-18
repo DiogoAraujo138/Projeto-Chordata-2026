@@ -1,73 +1,126 @@
-# Welcome to your Lovable project
+# 🐾 Chordata Consultoria — Site Institucional
 
-## Project info
+**O Ecossistema Completo para Transformar seu Negócio Veterinário**
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Site institucional da Chordata Consultoria, apresentando o ecossistema de marcas voltado para a gestão integrada do mercado veterinário.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Tech Stack
 
-**Use Lovable**
+- **React 18** — Biblioteca de UI
+- **TypeScript** — Tipagem estática
+- **Vite** — Build tool ultrarrápido
+- **Tailwind CSS** — Framework de estilos utilitários
+- **Lucide React** — Ícones SVG
+- **shadcn/ui** — Componentes de UI acessíveis
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📦 Instalação
 
-Changes made via Lovable will be committed automatically to this repo.
+```bash
+# Clonar o repositório
+git clone https://github.com/DiogoAraujo138/Projeto-Chordata-2026.git
+cd Projeto-Chordata-2026
 
-**Use your preferred IDE**
+# Instalar dependências
+npm install
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Rodar em desenvolvimento
 npm run dev
+
+# Build para produção
+npm run build
+
+# Preview do build
+npm run preview
 ```
 
-**Edit a file directly in GitHub**
+## 🏗️ Estrutura do Projeto
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── assets/
+│   ├── logos/          # Logos das marcas do ecossistema
+│   └── team/           # Fotos da equipe
+├── components/
+│   ├── sections/       # Seções da página
+│   │   ├── HeroSection.tsx
+│   │   ├── PurposeSection.tsx
+│   │   ├── EcosystemSection.tsx
+│   │   ├── ProblemSection.tsx
+│   │   ├── MethodSection.tsx
+│   │   ├── ServicesSection.tsx
+│   │   ├── TimelineSection.tsx
+│   │   ├── BrandsSection.tsx
+│   │   ├── LocationSection.tsx
+│   │   ├── TestimonialsSection.tsx
+│   │   ├── TeamSection.tsx
+│   │   └── ContactSection.tsx
+│   ├── ui/             # Componentes base (shadcn/ui)
+│   ├── Header.tsx
+│   ├── Logo.tsx
+│   ├── WhatsAppButton.tsx
+│   ├── BackToTop.tsx
+│   └── ScrollProgress.tsx
+├── hooks/              # Custom hooks (useScrollAnimation, etc)
+├── lib/                # Utilitários
+├── pages/
+│   └── Index.tsx       # Página principal
+└── index.css           # Estilos globais e design system
+```
 
-**Use GitHub Codespaces**
+## 🎨 Design System
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Paleta:** Slate (backgrounds) + Blue (#3B82F6 como accent)
+- **Tipografia:** Montserrat (headings) + Inter (corpo)
+- **Tema:** Dark (hero/seções) + Light (seções alternadas)
 
-## What technologies are used for this project?
+## 🌐 Marcas do Ecossistema
 
-This project is built with:
+| Marca | Descrição |
+|-------|-----------|
+| **Chordata Consultoria** | Consultoria estratégica em gestão |
+| **Chordata Analytics** | Inteligência de dados e Power BI |
+| **MentAll.Vet** | Saúde mental veterinária |
+| **JurídicoPet Digital** | Conformidade jurídica digital |
+| **VetConnection** | Feiras e eventos veterinários |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🚀 Deploy na Vercel
 
-## How can I deploy this project?
+### Opção 1: Via Dashboard Vercel
+1. Acesse [vercel.com](https://vercel.com) e faça login
+2. Clique em **"Add New Project"**
+3. Importe o repositório `DiogoAraujo138/Projeto-Chordata-2026`
+4. As configurações serão detectadas automaticamente via `vercel.json`
+5. Clique em **"Deploy"**
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Opção 2: Via Vercel CLI
+```bash
+npm i -g vercel
+vercel login
+vercel --prod
+```
 
-## Can I connect a custom domain to my Lovable project?
+### Configurações de Deploy
+- **Framework:** Vite
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+- **Node Version:** 18+
 
-Yes, you can!
+## 📋 Funcionalidades
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- ✅ Design responsivo (mobile-first)
+- ✅ Animações de scroll suaves
+- ✅ Formulário de contato com validação
+- ✅ Botão WhatsApp flutuante
+- ✅ Contador animado de métricas
+- ✅ Mapa interativo do Brasil
+- ✅ Carrossel de depoimentos
+- ✅ Timeline histórica interativa
+- ✅ Ecossistema orbital animado
+- ✅ Otimizado para SEO
+- ✅ Code splitting para performance
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📄 Licença
+
+Projeto proprietário — Chordata Consultoria © 2026
