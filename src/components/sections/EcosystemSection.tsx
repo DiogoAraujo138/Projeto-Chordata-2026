@@ -75,7 +75,7 @@ const EcosystemSection = () => {
         {/* Desktop orbital diagram */}
         <div className="hidden lg:block relative w-full max-w-2xl mx-auto aspect-square mb-8">
           {/* Center hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-white border border-slate-200 flex items-center justify-center shadow-lg z-10 p-4">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shadow-xl z-10 p-4">
             <img src={logoChordataEcossistema} alt="Ecossistema Chordata" className="w-full h-full object-contain" loading="lazy" decoding="async" />
           </div>
 
