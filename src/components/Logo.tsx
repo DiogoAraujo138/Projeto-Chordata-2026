@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 
-import chordataConsultoria from '@/assets/logos/chordata-consultoria.png';
+import chordataConsultoria from '@/assets/logos/chordata-consultoria-new.png';
 import chordataLogoWhite from '@/assets/logos/chordata-logo-white.png';
-import chordataAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
-import mentall from '@/assets/logos/mentall.png';
-import vetconnection from '@/assets/logos/vetconnection-new.png';
-import juridicoPet from '@/assets/logos/juridico-pet.png';
+import chordataAnalytics from '@/assets/logos/chordata-analytics-new2.png';
+import mentall from '@/assets/logos/mentall-new.png';
+import vetconnection from '@/assets/logos/vetconnection-new2.png';
+import juridicoPet from '@/assets/logos/juridico-pet-new.png';
 import chordataSimboloSolido from '@/assets/logos/chordata-simbolo-solido.png';
 
 const logoMap = {

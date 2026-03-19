@@ -1,10 +1,10 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-import logoChordataConsultoria from '@/assets/logos/chordata-consultoria.png';
-import logoAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
-import logoMentall from '@/assets/logos/mentall.png';
-import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
-import logoVetconnection from '@/assets/logos/vetconnection-new.png';
+import logoChordataConsultoria from '@/assets/logos/chordata-consultoria-new.png';
+import logoAnalytics from '@/assets/logos/chordata-analytics-new2.png';
+import logoMentall from '@/assets/logos/mentall-new.png';
+import logoJuridicoPet from '@/assets/logos/juridico-pet-new.png';
+import logoVetconnection from '@/assets/logos/vetconnection-new2.png';
 
 const brands = [
   {
@@ -73,7 +73,7 @@ const BrandsSection = () => {
               <div
                 className="w-24 h-24 md:w-28 md:h-28 rounded-2xl flex items-center justify-center p-4 mb-3 transition-all duration-200
                   border shadow-sm group-hover:shadow-md group-hover:scale-105
-                  bg-white border-slate-200 group-hover:border-blue-300"
+                  bg-slate-800 border-slate-700 group-hover:border-blue-400"
               >
                 <img
                   src={brand.logo}

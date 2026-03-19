@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Shield } from 'lucide-react';
 import logoChordataEcossistema from '@/assets/logos/chordata-ecossistema-branco.png';
-import logoChordataPrincipal from '@/assets/logos/chordata-consultoria.png';
-import logoMentallvet from '@/assets/logos/mentall.png';
-import logoAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
-import logoVetconnection from '@/assets/logos/vetconnection-new.png';
-import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
+import logoChordataPrincipal from '@/assets/logos/chordata-consultoria-new.png';
+import logoMentallvet from '@/assets/logos/mentall-new.png';
+import logoAnalytics from '@/assets/logos/chordata-analytics-new2.png';
+import logoVetconnection from '@/assets/logos/vetconnection-new2.png';
+import logoJuridicoPet from '@/assets/logos/juridico-pet-new.png';
 
 const satellites = [
   {
@@ -96,7 +96,7 @@ const EcosystemSection = () => {
                   selected === i
                     ? 'scale-105 bg-blue-500 border-blue-500 shadow-lg'
                     : sat.logo
-                    ? 'bg-white border-slate-200 hover:border-blue-300'
+                    ? 'bg-slate-800 border-slate-700 hover:border-blue-400'
                     : 'bg-slate-700 border-slate-600 hover:border-blue-400'
                 }`}
                 style={{ left: `${x}%`, top: `${y}%` }}
@@ -140,7 +140,7 @@ const EcosystemSection = () => {
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className={`w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden shrink-0 ${
-                  sat.logo ? 'bg-white' : 'bg-slate-700'
+                  sat.logo ? 'bg-slate-700' : 'bg-slate-700'
                 }`}>
                   <SatelliteIcon sat={sat} size={sat.logo ? 40 : 20} selected={selected === i} />
                 </div>

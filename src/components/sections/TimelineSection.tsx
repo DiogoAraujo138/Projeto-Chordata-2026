@@ -2,11 +2,11 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useState, useRef, useEffect } from 'react';
 import { Rocket, BarChart3, Heart, CalendarCheck, Scale, Layers, PartyPopper } from 'lucide-react';
 
-import logoChordataConsultoria from '@/assets/logos/chordata-consultoria.png';
-import logoAnalytics from '@/assets/logos/chordata-analytics-new.jpg';
-import logoMentall from '@/assets/logos/mentall.png';
-import logoVetconnection from '@/assets/logos/vetconnection-new.png';
-import logoJuridicoPet from '@/assets/logos/juridico-pet.png';
+import logoChordataConsultoria from '@/assets/logos/chordata-consultoria-new.png';
+import logoAnalytics from '@/assets/logos/chordata-analytics-new2.png';
+import logoMentall from '@/assets/logos/mentall-new.png';
+import logoVetconnection from '@/assets/logos/vetconnection-new2.png';
+import logoJuridicoPet from '@/assets/logos/juridico-pet-new.png';
 
 const timelineData = [
   {

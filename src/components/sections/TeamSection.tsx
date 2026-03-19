@@ -22,19 +22,19 @@ const team = [
   {
     initials: 'EM',
     name: 'Eduardo Monteiro',
-    role: 'Consultor Associado',
+    role: 'Psicólogo e Consultor Associado',
     image: photoEduardo,
   },
   {
     initials: 'EM',
     name: 'Eliz Modena',
-    role: 'Psicóloga e Consultora Organizacional de Clínicas e Hospitais Veterinários',
+    role: 'Psicóloga e Consultora Associada',
     image: photoEliz,
   },
   {
     initials: 'DA',
     name: 'Diogo Araújo',
-    role: 'Analista de Dados',
+    role: 'Analista de dados e Consultor Associado',
     image: photoDiogo,
   },
 ];

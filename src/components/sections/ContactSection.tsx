@@ -108,8 +108,8 @@ const ContactSection = () => {
                 <Phone size={18} className="text-blue-400" />
               </div>
               <div className="text-sm space-y-0.5">
-                <p>Mikael Cattani: (51) 97622-7070</p>
-                <p>Thales Altieri: (51) 91196-578</p>
+                <p>Mikael Cattani: (51) 9762-2707</p>
+                <p>Thales Rodrigues: (51) 9119-6578</p>
               </div>
             </div>
 
