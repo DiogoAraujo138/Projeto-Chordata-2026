@@ -16,6 +16,7 @@ const tabs = [
     items: [
       { title: 'Diagnóstico Organizacional', desc: 'Análise externa, precisão técnica, parecer sobre problemas identificados' },
       { title: 'Planejamento Estratégico', desc: 'Diagnóstico + plano de ação + direcionamento específico' },
+      { title: 'Valuation para Clínicas e Hospitais', desc: 'Avaliação estratégica de negócios veterinários, com apoio na estruturação da operação para valorização do ativo e suporte comercial na busca por compradores.' },
     ],
   },
   {
@@ -23,6 +24,15 @@ const tabs = [
     items: [
       { title: 'Programa de Capacitação de Gestores', desc: 'Visão gerencial, análise de cenários, gestão de equipe (reuniões semanais 1h30, online ou presencial)' },
       { title: 'Programa de Capacitação de Equipe', desc: 'Atendimento ao cliente, estratégias de vendas, comunicação assertiva' },
+    ],
+  },
+  {
+    label: 'MentAll.Vet',
+    items: [
+      { title: 'Atendimento Individual de Fácil Acesso', desc: 'A plataforma conta com psicólogos e psicanalistas especializados e empáticos às demandas e rotinas dos profissionais da área veterinária.' },
+      { title: 'MentALL.Vet para Empresas', desc: 'Programa para clínicas e hospitais parceiros que desejam contribuir para o bem-estar e saúde mental das suas equipes e profissionais.' },
+      { title: 'Regularização NR-1', desc: 'Programa dinâmico de regularização da NR-1 e avaliação de riscos psicossociais e soluções especializadas para clínicas e hospitais.' },
+      { title: 'Programas de Gestão de Pessoas', desc: 'Programas especializados para desenvolvimento de equipes, lideranças e processos de recursos humanos para empresas.' },
     ],
   },
 ];
@@ -47,7 +57,7 @@ const ServicesSection = () => {
             <button
               key={i}
               onClick={() => setActive(i)}
-              className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 ${
                 active === i
                   ? 'bg-blue-500 text-white shadow-md'
                   : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200'
