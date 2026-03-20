@@ -5,7 +5,7 @@ const PurposeSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="proposito" className="py-24 md:py-36 bg-slate-50">
+    <section id="proposito" className="py-24 md:py-36 bg-white">
       <div ref={ref} className={`container mx-auto px-6 text-center max-w-4xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <span className="section-label">— Nosso Propósito —</span>
 

@@ -3,12 +3,12 @@ import { Menu, X } from 'lucide-react';
 import Logo from '@/components/Logo';
 
 const navItems = [
-  { label: 'Propósito', href: '#proposito' },
   { label: 'Ecossistema', href: '#ecossistema' },
-  { label: 'Método', href: '#metodo' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Resultados', href: '#atuacao' },
+  { label: 'Método', href: '#metodo' },
+  { label: 'Onde Atuamos', href: '#atuacao' },
   { label: 'Time', href: '#time' },
+  { label: 'Propósito', href: '#proposito' },
   { label: 'Contato', href: '#contato' },
 ];
 

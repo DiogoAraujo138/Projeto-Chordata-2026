@@ -1,5 +1,6 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import AnimatedCounter from '@/components/AnimatedCounter';
+import { MapPin } from 'lucide-react';
 
 const activeStates = ['RS', 'SC', 'PR', 'SP', 'MG', 'PA', 'MA', 'AP'];
 
@@ -13,6 +14,24 @@ const stateLabels: Record<string, string> = {
   MA: 'Maranhão',
   AP: 'Amapá',
 };
+
+const regionGroups = [
+  {
+    region: 'Sul',
+    states: ['RS', 'SC', 'PR'],
+    color: 'blue',
+  },
+  {
+    region: 'Sudeste',
+    states: ['SP', 'MG'],
+    color: 'emerald',
+  },
+  {
+    region: 'Norte / Nordeste',
+    states: ['PA', 'MA', 'AP'],
+    color: 'amber',
+  },
+];
 
 const statePaths: Record<string, string> = {
   AP: 'M280,60 L300,40 L320,55 L315,80 L295,90 Z',
@@ -44,6 +63,13 @@ const statePaths: Record<string, string> = {
   RS: 'M290,480 L340,475 L360,490 L340,540 L290,550 L270,520 Z',
 };
 
+function getStateColor(code: string): string {
+  if (['RS', 'SC', 'PR'].includes(code)) return '#3B82F6';
+  if (['SP', 'MG'].includes(code)) return '#10B981';
+  if (['PA', 'MA', 'AP'].includes(code)) return '#F59E0B';
+  return '#3B82F6';
+}
+
 const LocationSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
@@ -55,9 +81,12 @@ const LocationSection = () => {
           <h2 className="section-title text-white">
             Presença Nacional & Impacto
           </h2>
+          <p className="text-slate-400 section-subtitle max-w-2xl mx-auto">
+            Atendemos clínicas, hospitais e empresas do setor veterinário em 8 estados brasileiros, com sede no Rio Grande do Sul.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Brazil Map */}
           <div className="flex justify-center">
             <div className="relative w-full max-w-md">
@@ -71,10 +100,10 @@ const LocationSection = () => {
                     <g key={code}>
                       <path
                         d={d}
-                        fill={isActive ? '#3B82F6' : '#1E293B'}
+                        fill={isActive ? getStateColor(code) : '#1E293B'}
                         stroke="#0F172A"
                         strokeWidth="1.5"
-                        className={`transition-all duration-200 ${isActive ? 'hover:brightness-110 cursor-pointer' : 'opacity-50'}`}
+                        className={`transition-all duration-300 ${isActive ? 'hover:brightness-125 cursor-pointer drop-shadow-md' : 'opacity-40'}`}
                       />
                       {isActive && (
                         <text
@@ -86,7 +115,7 @@ const LocationSection = () => {
                           fontSize="11"
                           fontWeight="700"
                           fontFamily="Inter, sans-serif"
-                          className="pointer-events-none select-none"
+                          className="pointer-events-none select-none drop-shadow-sm"
                         >
                           {code}
                         </text>
@@ -95,45 +124,60 @@ const LocationSection = () => {
                   );
                 })}
               </svg>
-
-              {/* Legend */}
-              <div className="mt-8 flex flex-wrap gap-2 justify-center">
-                {activeStates.map((code) => (
-                  <span
-                    key={code}
-                    className="inline-flex items-center gap-1.5 bg-slate-800 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-md border border-slate-700"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                    {stateLabels[code]}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
 
-          {/* Impact Numbers */}
-          <div className="space-y-10">
-            <div>
-              <h3 className="font-heading font-bold text-white text-xl mb-3">
-                Nosso Impacto em Números
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Resultados concretos da nossa atuação no mercado veterinário brasileiro.
-              </p>
+          {/* Right side: Regions + Impact Numbers */}
+          <div className="space-y-8">
+            {/* Region groups */}
+            <div className="space-y-4">
+              {regionGroups.map((group) => {
+                const colorMap: Record<string, { dot: string; border: string; bg: string }> = {
+                  blue: { dot: 'bg-blue-500', border: 'border-blue-500/20', bg: 'bg-blue-500/5' },
+                  emerald: { dot: 'bg-emerald-500', border: 'border-emerald-500/20', bg: 'bg-emerald-500/5' },
+                  amber: { dot: 'bg-amber-500', border: 'border-amber-500/20', bg: 'bg-amber-500/5' },
+                };
+                const colors = colorMap[group.color];
+                return (
+                  <div key={group.region} className={`rounded-xl border ${colors.border} ${colors.bg} p-4`}>
+                    <h4 className="text-white font-heading font-semibold text-sm mb-2 flex items-center gap-2">
+                      <MapPin size={14} className="text-slate-400" />
+                      {group.region}
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {group.states.map((code) => (
+                        <span
+                          key={code}
+                          className="inline-flex items-center gap-1.5 bg-slate-800/60 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-md"
+                        >
+                          <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                          {stateLabels[code]}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="card-dark p-6 text-center">
-                <AnimatedCounter target={2000} prefix="+" label="Pessoas Movimentadas" />
-              </div>
-              <div className="card-dark p-6 text-center">
-                <AnimatedCounter target={60} prefix="+" label="Projetos de Consultoria" />
-              </div>
-              <div className="card-dark p-6 text-center">
-                <AnimatedCounter target={300} prefix="+" label="Pessoas Capacitadas" />
-              </div>
-              <div className="card-dark p-6 text-center">
-                <AnimatedCounter target={8} label="Estados Atendidos" />
+            {/* Impact Numbers */}
+            <div>
+              <h3 className="font-heading font-bold text-white text-lg mb-4">
+                Nosso Impacto em Números
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="card-dark p-5 text-center">
+                  <AnimatedCounter target={2000} prefix="+" label="Pessoas Movimentadas" />
+                </div>
+                <div className="card-dark p-5 text-center">
+                  <AnimatedCounter target={60} prefix="+" label="Projetos de Consultoria" />
+                </div>
+                <div className="card-dark p-5 text-center">
+                  <AnimatedCounter target={300} prefix="+" label="Pessoas Capacitadas" />
+                </div>
+                <div className="card-dark p-5 text-center">
+                  <AnimatedCounter target={8} label="Estados Atendidos" />
+                </div>
               </div>
             </div>
           </div>

@@ -9,7 +9,6 @@ import EcosystemSection from '@/components/sections/EcosystemSection';
 import MethodSection from '@/components/sections/MethodSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import LocationSection from '@/components/sections/LocationSection';
-
 import TimelineSection from '@/components/sections/TimelineSection';
 import BrandsSection from '@/components/sections/BrandsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
@@ -22,18 +21,29 @@ const Index = () => {
       <ScrollProgress />
       <Header />
       <main>
+        {/* 1. Hero */}
         <HeroSection />
-        <PurposeSection />
-        <ProblemSection />
+        {/* 2. Ecossistema (Quem somos) */}
         <EcosystemSection />
-        <MethodSection />
+        {/* 3. Serviços (O que fazemos) */}
         <ServicesSection />
+        {/* 4. Método (Como fazemos) */}
+        <MethodSection />
+        {/* 5. Onde Atuamos */}
         <LocationSection />
-        
-        <TimelineSection />
-        <BrandsSection />
-        <TestimonialsSection />
+        {/* 6. Time */}
         <TeamSection />
+        {/* 7. Propósito (Por que fazemos) */}
+        <PurposeSection />
+        {/* 8. Diferenciais (Por que escolher a Chordata) */}
+        <ProblemSection />
+        {/* 9. Depoimentos */}
+        <TestimonialsSection />
+        {/* 10. Timeline (História) */}
+        <TimelineSection />
+        {/* 11. Marcas */}
+        <BrandsSection />
+        {/* 12. Contato */}
         <ContactSection />
       </main>
       <WhatsAppButton />
