@@ -9,11 +9,6 @@ const testimonials = [
     text: 'O trabalho da Chordata trouxe uma visão estratégica que transformou a forma como gerenciamos nosso centro. Profissionalismo e resultados reais.',
   },
   {
-    name: 'Wanessa Beheregaray',
-    role: 'Integrar Vet — Doutora em Ciências Veterinárias',
-    text: 'É uma empresa transparente, engajada no trabalho e aberta para parcerias. Ela propõe um projeto que valoriza as trocas e traz ferramentas que irão facilitar a gestão do negócio. A Chordata tem sido uma excelente parceira.',
-  },
-  {
     name: 'Gilson de Andrade',
     role: 'Representante Comercial — 24 anos de atuação no mercado',
     text: 'O profissional do futuro é o que auxilia seus colaboradores a atingirem seu melhor resultado!',

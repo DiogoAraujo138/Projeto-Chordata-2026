@@ -30,14 +30,14 @@ const brands = [
   },
   {
     name: 'JurídicoPet Digital',
-    description: 'Conformidade jurídica digital',
+    description: 'Assinatura eletrônica e conformidade jurídica digital',
     logo: logoJuridicoPet,
     darkBg: false,
     url: 'https://juridicopetdigital.com.br/',
   },
   {
     name: 'VetConnection',
-    description: 'Feiras e eventos veterinários',
+    description: 'Feiras, congressos e eventos veterinários',
     logo: logoVetconnection,
     darkBg: false,
     url: 'https://brasilfeiras.vet/',

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Mail, Phone, MapPin, Globe, Linkedin, Instagram, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Send, CheckCircle } from 'lucide-react';
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -103,15 +103,15 @@ const ContactSection = () => {
               </a>
             ))}
 
-            <div className="flex items-center gap-4 text-slate-300">
-              <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
+            <a href="tel:+5551997622707" className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
+              <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:border-blue-500/30 transition-colors duration-200">
                 <Phone size={18} className="text-blue-400" />
               </div>
-              <div className="text-sm space-y-0.5">
-                <p>Mikael Cattani: (51) 9762-2707</p>
-                <p>Thales Rodrigues: (51) 9119-6578</p>
+              <div className="text-sm">
+                <p className="text-slate-500 text-xs mb-0.5">Comercial</p>
+                <p>+55 51 99762-2707</p>
               </div>
-            </div>
+            </a>
 
             <div className="flex items-center gap-4 text-slate-300">
               <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0">
@@ -120,12 +120,6 @@ const ContactSection = () => {
               <span className="text-sm">Instituto Caldeira — Tv. São José, 455, Navegantes, Porto Alegre - RS</span>
             </div>
 
-            <a href="https://chordataconsultoria.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
-              <div className="w-11 h-11 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 group-hover:border-blue-500/30 transition-colors duration-200">
-                <Globe size={18} className="text-blue-400" />
-              </div>
-              <span className="text-sm">chordataconsultoria.com</span>
-            </a>
 
             <div className="flex gap-3 pt-4">
               {[
@@ -151,7 +145,7 @@ const ContactSection = () => {
 
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-slate-800 text-center">
-          <p className="text-slate-500 text-sm">© 2025 Chordata Consultoria · Todos os direitos reservados</p>
+          <p className="text-slate-500 text-sm">© 2026 Chordata Consultoria · Todos os direitos reservados</p>
         </div>
       </div>
     </section>
