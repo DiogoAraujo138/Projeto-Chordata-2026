@@ -17,16 +17,22 @@ const HeroSection = () => {
           <Logo variant="principal" size="hero" glow />
         </div>
 
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+          <span className="text-blue-400 text-xs sm:text-sm font-medium tracking-wide">5 soluções · 1 ecossistema · Transformação completa</span>
+        </div>
+
         {/* Heading */}
         <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] opacity-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          O Ecossistema Completo para{' '}
+          O Ecossistema que{' '}
           <span className="text-blue-400">
-            Transformar seu Negócio Veterinário
+            Transforma Negócios Veterinários
           </span>
         </h1>
 
         <p className="text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-          Do diagnóstico à transformação — somos o ecossistema completo para clínicas, hospitais e negócios do setor pet/vet.
+          Consultoria, dados, saúde mental, conformidade jurídica e conexão — tudo integrado para levar sua clínica, hospital ou empresa veterinária ao próximo nível.
         </p>
 
         {/* CTAs */}
