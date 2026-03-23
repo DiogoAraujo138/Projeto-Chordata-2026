@@ -9,11 +9,6 @@ const testimonials = [
     text: 'O trabalho da Chordata trouxe uma visão estratégica que transformou a forma como gerenciamos nosso centro. Profissionalismo e resultados reais.',
   },
   {
-    name: 'Wanessa Beheregaray',
-    role: 'Integrar Vet — Doutora em Ciências Veterinárias',
-    text: 'É uma empresa transparente, engajada no trabalho e aberta para parcerias. Ela propõe um projeto que valoriza as trocas e traz ferramentas que irão facilitar a gestão do negócio. A Chordata tem sido uma excelente parceira.',
-  },
-  {
     name: 'Gilson de Andrade',
     role: 'Representante Comercial — 24 anos de atuação no mercado',
     text: 'O profissional do futuro é o que auxilia seus colaboradores a atingirem seu melhor resultado!',
@@ -46,7 +41,7 @@ const TestimonialsSection = () => {
   }, [next]);
 
   return (
-    <section className="py-24 md:py-36 bg-slate-800">
+    <section id="depoimentos" className="py-24 md:py-36 bg-slate-800">
       <div ref={ref} className={`container mx-auto px-6 max-w-4xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-16">
           <span className="section-label">— Depoimentos —</span>

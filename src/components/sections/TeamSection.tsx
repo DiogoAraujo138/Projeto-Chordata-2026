@@ -22,7 +22,7 @@ const team = [
   {
     initials: 'EM',
     name: 'Eduardo Monteiro',
-    role: 'Psicólogo e Consultor Associado',
+    role: 'CEO MentAll.Vet',
     image: photoEduardo,
   },
   {
@@ -58,12 +58,12 @@ const TeamSection = () => {
         <div className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 stagger-children ${isVisible ? 'visible' : ''}`}>
           {team.map((m) => (
             <div key={m.name} className="card-clean p-6 text-center group">
-              <div className="w-18 h-18 md:w-20 md:h-20 rounded-full mx-auto mb-4 overflow-hidden flex items-center justify-center bg-slate-900 ring-2 ring-slate-200 group-hover:ring-blue-300 transition-all duration-200">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto mb-4 overflow-hidden flex items-center justify-center bg-slate-900 ring-2 ring-slate-200 group-hover:ring-blue-300 transition-all duration-200" style={{ aspectRatio: '1 / 1' }}>
                 {m.image ? (
                   <img
                     src={m.image}
                     alt={m.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                     loading="lazy"
                     decoding="async"
                   />
@@ -74,7 +74,7 @@ const TeamSection = () => {
                 )}
               </div>
               <h3 className="font-heading font-bold text-slate-900 text-sm mb-1">{m.name}</h3>
-              <p className="text-slate-500 text-xs leading-relaxed">{m.role}</p>
+              <p className="text-slate-500 text-xs leading-relaxed min-h-[2.5rem]">{m.role}</p>
             </div>
           ))}
         </div>
