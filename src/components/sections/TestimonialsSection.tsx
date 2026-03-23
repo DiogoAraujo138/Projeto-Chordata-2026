@@ -41,7 +41,7 @@ const TestimonialsSection = () => {
   }, [next]);
 
   return (
-    <section className="py-24 md:py-36 bg-slate-800">
+    <section id="depoimentos" className="py-24 md:py-36 bg-slate-800">
       <div ref={ref} className={`container mx-auto px-6 max-w-4xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-16">
           <span className="section-label">— Depoimentos —</span>

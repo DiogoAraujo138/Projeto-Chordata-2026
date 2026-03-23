@@ -183,7 +183,7 @@ const TimelineSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-24 md:py-36 bg-slate-900">
+    <section id="trajetoria" className="py-24 md:py-36 bg-slate-900">
       <div ref={ref} className={`container mx-auto px-6 max-w-5xl scroll-fade-up ${isVisible ? 'visible' : ''}`}>
         <div className="text-center mb-16">
           <span className="section-label">— Nossa Trajetória —</span>
