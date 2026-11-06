@@ -1,6 +1,6 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useState, useRef, useEffect } from 'react';
-import { Rocket, BarChart3, Heart, CalendarCheck, Scale, Layers, PartyPopper } from 'lucide-react';
+import { Rocket, BarChart3, Heart, Handshake, Scale, PartyPopper, Building2, Globe } from 'lucide-react';
 
 import logoChordataConsultoria from '@/assets/logos/chordata-consultoria-new.png';
 import logoAnalytics from '@/assets/logos/chordata-analytics-new2.png';
@@ -10,74 +10,77 @@ import logoJuridicoPet from '@/assets/logos/juridico-pet-new.png';
 
 const timelineData = [
   {
-    ano: '2022',
-    semestre: null,
-    nome: 'Chordata Consultoria',
+    ano: '2020–2021',
+    titulo: 'Início do Projeto',
     descricao:
-      'O início de tudo. Fundação da consultoria estratégica em gestão empresarial para o mercado veterinário e pet, em Porto Alegre/RS. O primeiro passo de uma visão que se tornaria um ecossistema completo.',
-    logo: logoChordataConsultoria,
+      'Iniciamos o projeto da Chordata Consultoria, com o desenvolvimento de um projeto de precificação e processos operacionais e administrativos para o Centro Veterinário Welpen (São Leopoldo - RS).',
+    logo: null,
     icon: Rocket,
     destaque: true,
   },
   {
-    ano: '2023',
-    semestre: null,
-    nome: 'Chordata Analytics',
+    ano: '2022',
+    titulo: 'Institucionalização da Chordata',
     descricao:
-      'Nasce o braço de inteligência de dados. Soluções de Power BI que transformam dados complexos em insights claros, permitindo decisões estratégicas baseadas em números reais.',
+      'Foi instituída a empresa Chordata Consultoria e Assessoria Ltda, com sede em Porto Alegre - RS, dando início ao seu ecossistema de parceiros, formação de equipe de consultores e início da construção de uma ferramenta de Business Intelligence para clínicas e hospitais veterinários.',
+    logo: logoChordataConsultoria,
+    icon: Building2,
+    destaque: false,
+  },
+  {
+    ano: '2023',
+    titulo: 'Expansão e Estruturação do Ecossistema',
+    descricao:
+      'A Chordata já se torna presente em 4 estados (RS, SC, PA, MA), instituindo a empresa spin-off Chordata Analytics, desenvolvendo o MVP da MentALL.Vet com seu 1º Simpósio de Saúde Mental na Medicina Veterinária e Mercado de Trabalho (Caxias do Sul - RS).',
+    logo: null,
+    icon: Globe,
+    destaque: false,
+  },
+  {
+    ano: '2023',
+    titulo: 'Lançamento da Chordata Analytics',
+    descricao:
+      'Lançamento da primeira solução de Business Intelligence em dashboards de gestão para o mercado veterinário, por meio da Chordata Analytics.',
     logo: logoAnalytics,
     icon: BarChart3,
     destaque: false,
   },
   {
     ano: '2024',
-    semestre: '1º sem',
-    nome: 'MentAll.Vet',
+    titulo: 'MentALL.Vet',
     descricao:
-      'A saúde mental entra no ecossistema. Atendimento psicológico individual, programas corporativos e treinamentos voltados ao bem-estar de equipes veterinárias — porque equipes saudáveis constroem negócios sustentáveis.',
+      'A saúde mental entra no ecossistema. O que era um projeto consultivo se tornou uma plataforma. Atendimento psicológico individual, programas corporativos e treinamentos voltados ao bem-estar de equipes veterinárias — porque equipes saudáveis constroem negócios sustentáveis.',
     logo: logoMentall,
     icon: Heart,
     destaque: false,
   },
   {
     ano: '2024',
-    semestre: '2º sem',
-    nome: 'VetConnection',
+    titulo: 'Parceria PAVE/ABHV',
+    subtitulo: '2º semestre',
     descricao:
-      'Começa o planejamento da maior plataforma de conexão do mercado veterinário do Sul do Brasil. O projeto VetConnection / Health Meeting Brasil ganha forma e estrutura.',
+      'A Chordata se torna a mais nova parceira do PAVE - Programa de Apoio ao Veterinário Empreendedor da ABHV, buscando fortalecer o empreendedorismo no setor, oferecer soluções de ponta e contribuir para a atuação profissional no mercado veterinário.',
     logo: null,
-    icon: CalendarCheck,
+    icon: Handshake,
     destaque: false,
   },
   {
     ano: '2025',
-    semestre: '1º sem',
-    nome: 'Jurídico Pet Digital',
+    titulo: 'Jurídico Pet Digital',
     descricao:
-      'Lançamento do JurídicoPet Digital — plataforma de assinatura eletrônica e conformidade jurídica para o setor pet & vet. Termos de consentimento, contratos e autorizações de forma digital, segura e rastreável.',
+      'Em parceria com a empresa de assessoria jurídica Jurídico Pet, foi lançada a plataforma de assinatura eletrônica e conformidade jurídica para o setor pet & vet. Termos de consentimento, contratos e autorizações de forma digital, segura e rastreável.',
     logo: logoJuridicoPet,
     icon: Scale,
     destaque: false,
   },
   {
     ano: '2025',
-    semestre: '2º sem',
-    nome: 'VetConnection Evento',
+    titulo: 'Evento Vet Connection',
     descricao:
-      'Realização do evento VetConnection / Health Meeting Brasil — a maior plataforma de conexão do mercado veterinário do Sul do Brasil, reunindo 15 mil visitantes, 16 estados e 6 países.',
+      'Realização do evento Vet Connection 2025 — projeto que promete ser a maior plataforma de conexão e inovação do mercado veterinário do Sul do Brasil. Seu primeiro evento ocorreu em Porto Alegre - RS, reunindo 5 mil visitantes, dentre eles 1.500 médicos veterinários, mais de 100 palestrantes distribuídos em 16 simpósios e mais de 60 expositores. O evento também contou com uma batalha de startups com premiação concedida pela VENTIUR Smart Capital.',
     logo: logoVetconnection,
     icon: PartyPopper,
     destaque: false,
-  },
-  {
-    ano: '2026',
-    semestre: null,
-    nome: 'Ecossistema Chordata',
-    descricao:
-      'A consolidação do ecossistema integrado. Todas as soluções — consultoria, analytics, saúde mental, eventos e conformidade jurídica — conectadas em uma plataforma única de gestão para o mercado veterinário.',
-    logo: null,
-    icon: Layers,
-    destaque: true,
   },
 ];
 
@@ -111,8 +114,6 @@ const TimelineItem = ({
   const Icon = item.icon;
   const isFirst = index === 0;
   const isLast = index === timelineData.length - 1;
-  const yearLabel = item.semestre ? `${item.ano} · ${item.semestre}` : item.ano;
-  const yearLabelShort = item.semestre ? `${item.ano.slice(-2)}/${item.semestre.charAt(0)}` : item.ano;
 
   return (
     <div
@@ -136,8 +137,8 @@ const TimelineItem = ({
               </span>
             )}
             {isLast && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-blue-500 text-[10px] font-bold uppercase tracking-wider text-white">
-                Ecossistema Completo
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-blue-500 text-[10px] font-bold uppercase tracking-wider text-white whitespace-nowrap">
+                Maior Evento Vet do Sul
               </span>
             )}
 
@@ -145,7 +146,7 @@ const TimelineItem = ({
               {item.logo ? (
                 <img
                   src={item.logo}
-                  alt={item.nome}
+                  alt={item.titulo}
                   className="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                   loading="lazy"
                 />
@@ -156,14 +157,14 @@ const TimelineItem = ({
               )}
             </div>
 
-            {item.semestre && (
+            {'subtitulo' in item && item.subtitulo && (
               <span className="inline-block mb-1 px-2 py-0.5 rounded bg-blue-500/10 text-[10px] font-semibold text-blue-400 uppercase tracking-wide">
-                {item.semestre}
+                {item.subtitulo}
               </span>
             )}
 
             <h3 className="font-heading text-base font-semibold text-white mb-1">
-              {item.nome}
+              {item.titulo}
             </h3>
             <p className="text-sm text-slate-400 leading-relaxed">
               {item.descricao}
@@ -178,14 +179,7 @@ const TimelineItem = ({
             ${item.destaque ? 'w-14 h-14 ring-2 ring-blue-500/20 ring-offset-2 ring-offset-slate-900' : ''}`}
           >
             <span className="text-blue-400 font-heading font-bold text-xs leading-none text-center">
-              {item.semestre ? (
-                <>
-                  <span className="block text-sm">{item.ano}</span>
-                  <span className="block text-[8px] text-blue-300/70">{item.semestre}</span>
-                </>
-              ) : (
-                <span className="text-sm">{item.ano}</span>
-              )}
+              <span className="text-[11px]">{item.ano}</span>
             </span>
           </div>
         </div>
@@ -201,14 +195,7 @@ const TimelineItem = ({
             ${item.destaque ? 'ring-2 ring-blue-500/20 ring-offset-2 ring-offset-slate-900' : ''}`}
           >
             <span className="text-blue-400 font-heading font-bold text-[9px] leading-none text-center">
-              {item.semestre ? (
-                <>
-                  <span className="block text-xs">{item.ano}</span>
-                  <span className="block text-[7px] text-blue-300/70">{item.semestre}</span>
-                </>
-              ) : (
-                <span className="text-xs">{item.ano}</span>
-              )}
+              <span className="text-[10px]">{item.ano}</span>
             </span>
           </div>
           {index < timelineData.length - 1 && (
@@ -217,7 +204,7 @@ const TimelineItem = ({
         </div>
 
         <div
-          className={`flex-1 p-5 rounded-xl bg-slate-800/50 border border-slate-700/50
+          className={`flex-1 p-4 sm:p-5 rounded-xl bg-slate-800/50 border border-slate-700/50
           ${item.destaque ? 'ring-1 ring-blue-500/20' : ''}`}
         >
           {isFirst && (
@@ -227,24 +214,24 @@ const TimelineItem = ({
           )}
           {isLast && (
             <span className="inline-block mb-2 px-3 py-0.5 rounded-full bg-blue-500 text-[10px] font-bold uppercase tracking-wider text-white">
-              Ecossistema Completo
+              Maior Evento Vet do Sul
             </span>
           )}
 
           <div className="flex items-center gap-3 mb-2 flex-wrap">
             {item.logo ? (
-              <img src={item.logo} alt={item.nome} className="h-8 w-auto object-contain" loading="lazy" />
+              <img src={item.logo} alt={item.titulo} className="h-8 w-auto object-contain" loading="lazy" />
             ) : (
               <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
                 <Icon size={16} className="text-blue-400" />
               </div>
             )}
-            <h3 className="font-heading text-sm font-semibold text-white">{item.nome}</h3>
+            <h3 className="font-heading text-sm font-semibold text-white">{item.titulo}</h3>
           </div>
 
-          {item.semestre && (
+          {'subtitulo' in item && item.subtitulo && (
             <span className="inline-block mb-2 px-2 py-0.5 rounded bg-blue-500/10 text-[10px] font-semibold text-blue-400 uppercase tracking-wide">
-              {item.semestre}
+              {item.subtitulo}
             </span>
           )}
 
@@ -276,7 +263,7 @@ const TimelineSection = () => {
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-slate-700" />
 
           {timelineData.map((item, idx) => (
-            <TimelineItem key={`${item.ano}-${item.nome}`} item={item} index={idx} />
+            <TimelineItem key={`${item.ano}-${item.titulo}`} item={item} index={idx} />
           ))}
         </div>
 

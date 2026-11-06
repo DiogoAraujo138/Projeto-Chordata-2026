@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Shield } from 'lucide-react';
+import { Shield, ChevronDown, X } from 'lucide-react';
 import logoChordataEcossistema from '@/assets/logos/chordata-ecossistema-branco.png';
 import logoChordataPrincipal from '@/assets/logos/chordata-consultoria-new.png';
 import logoMentallvet from '@/assets/logos/mentall-new.png';
@@ -13,53 +13,41 @@ const satellites = [
     name: 'Chordata Consultoria',
     tagline: 'Estratégia e Gestão',
     logo: logoChordataPrincipal,
-    desc: 'Consultoria estratégica especializada em gestão de clínicas e hospitais veterinários. Análise de processos, otimização operacional, desenvolvimento de equipes e planos estratégicos customizados. É o núcleo que integra todas as outras soluções.',
-  },
-  {
-    name: 'MentAll.Vet',
-    tagline: 'Saúde Mental Veterinária',
-    logo: logoMentallvet,
-    desc: 'Equipes Saudáveis Constroem Negócios Sustentáveis. Atendimento psicológico individual, programas corporativos de gestão de equipes e treinamentos em saúde mental. Resultado: redução de rotatividade em até 30%, maior engajamento e clima organizacional melhorado.',
+    desc: 'Estratégia, gestão e desenvolvimento de negócios para clínicas, hospitais e empresas do mercado veterinário.',
   },
   {
     name: 'Chordata Analytics',
     tagline: 'Inteligência de Dados',
     logo: logoAnalytics,
-    desc: 'Dados transformados em decisões. Nossa plataforma de inteligência de dados transforma métricas em estratégia em tempo real. O que está funcionando e o que precisa mudar, decidindo com números, não com intuição.',
+    desc: 'Inteligência de dados, dashboards de gestão e soluções de BI para tomada de decisão no mercado veterinário.',
+  },
+  {
+    name: 'MentAll.Vet',
+    tagline: 'Saúde Mental Veterinária',
+    logo: logoMentallvet,
+    desc: 'Soluções voltadas à saúde mental, bem-estar corporativo e desenvolvimento humano para profissionais e empresas do setor veterinário.',
   },
   {
     name: 'JurídicoPet Digital',
     tagline: 'Conformidade Jurídica',
     logo: logoJuridicoPet,
-    desc: 'Conformidade jurídica sem burocracia. Assinatura eletrônica segura e válida para documentos veterinários. Termos de consentimento, contratos, autorizações — tudo digital, seguro e rastreável.',
+    desc: 'Assinatura eletrônica e conformidade jurídica digital.',
   },
   {
     name: 'VetConnection',
-    tagline: 'Feira e Eventos',
+    tagline: 'Feiras e Eventos',
     logo: logoVetconnection,
-    desc: 'A maior plataforma de conexão do mercado veterinário do Sul do Brasil. Dos criadores da Health Meeting Brasil (15 mil visitantes, 16 estados, 6 países), reunindo profissionais, estudantes, gestores e a indústria vet e pet.',
+    desc: 'Feiras, congressos e eventos veterinários.',
   },
 ];
-
-const SatelliteIcon = ({ sat, size, selected }: { sat: typeof satellites[0]; size: number; selected: boolean }) => {
-  if (sat.logo) {
-    return (
-      <img
-        src={sat.logo}
-        alt={sat.name}
-        className="object-contain rounded-lg"
-        style={{ width: size, height: size }}
-        loading="lazy"
-        decoding="async"
-      />
-    );
-  }
-  return <Shield size={size} className={selected ? 'text-white' : 'text-blue-400'} />;
-};
 
 const EcosystemSection = () => {
   const [selected, setSelected] = useState<number | null>(null);
   const { ref, isVisible } = useScrollAnimation();
+
+  const handleSelect = (i: number) => {
+    setSelected(selected === i ? null : i);
+  };
 
   return (
     <section id="ecossistema" className="py-24 md:py-36 bg-slate-800">
@@ -72,85 +60,97 @@ const EcosystemSection = () => {
           <p className="text-slate-400 section-subtitle">5 soluções integradas. Um único ecossistema. Transformação completa.</p>
         </div>
 
-        {/* Desktop orbital diagram */}
-        <div className="hidden lg:block relative w-full max-w-2xl mx-auto aspect-square mb-8">
-          {/* Center hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shadow-xl z-10 p-4">
-            <img src={logoChordataEcossistema} alt="Ecossistema Chordata" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+        {/* Desktop layout */}
+        <div className="hidden lg:block">
+          {/* Logo central */}
+          <div className="flex justify-center mb-10">
+            <div className="w-28 h-28 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shadow-xl p-5">
+              <img src={logoChordataEcossistema} alt="Ecossistema Chordata" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+            </div>
           </div>
 
-          {/* Orbit ring */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full border border-slate-700/50" />
-
-          {/* Satellites */}
-          {satellites.map((sat, i) => {
-            const angle = (i * (360 / satellites.length) - 90) * (Math.PI / 180);
-            const radius = 42;
-            const x = 50 + radius * Math.cos(angle);
-            const y = 50 + radius * Math.sin(angle);
-
-            return (
+          {/* Grid of companies */}
+          <div className="grid grid-cols-5 gap-4 max-w-4xl mx-auto mb-8">
+            {satellites.map((sat, i) => (
               <button
                 key={i}
-                className={`absolute w-28 h-28 -translate-x-1/2 -translate-y-1/2 rounded-xl border flex flex-col items-center justify-center gap-1 transition-all duration-200 cursor-pointer hover:scale-105 ${
+                className={`rounded-xl border flex flex-col items-center justify-center gap-2 p-5 transition-all duration-200 cursor-pointer hover:scale-105 ${
                   selected === i
-                    ? 'scale-105 bg-blue-500 border-blue-500 shadow-lg'
-                    : sat.logo
-                    ? 'bg-slate-800 border-slate-700 hover:border-blue-400'
-                    : 'bg-slate-700 border-slate-600 hover:border-blue-400'
+                    ? 'bg-blue-500/10 border-blue-500 shadow-lg shadow-blue-500/10'
+                    : 'bg-slate-800 border-slate-700 hover:border-blue-400'
                 }`}
-                style={{ left: `${x}%`, top: `${y}%` }}
-                onClick={() => setSelected(selected === i ? null : i)}
+                onClick={() => handleSelect(i)}
               >
-                {sat.logo ? (
-                  <img src={sat.logo} alt={sat.name} className="w-20 h-16 object-contain rounded" loading="lazy" decoding="async" />
-                ) : (
-                  <>
-                    <Shield size={22} className={selected === i ? 'text-white' : 'text-blue-400'} />
-                    <span className={`text-[10px] font-heading font-semibold text-center leading-tight px-1 ${
-                      selected === i ? 'text-white' : 'text-slate-300'
-                    }`}>
-                      {sat.name}
-                    </span>
-                  </>
-                )}
+                <img src={sat.logo} alt={sat.name} className="w-20 h-16 object-contain rounded" loading="lazy" decoding="async" />
+                <span className={`text-[11px] font-heading font-semibold text-center leading-tight ${
+                  selected === i ? 'text-blue-400' : 'text-slate-400'
+                }`}>
+                  {sat.name}
+                </span>
+                <ChevronDown size={14} className={`transition-transform duration-200 ${selected === i ? 'rotate-180 text-blue-400' : 'text-slate-500'}`} />
               </button>
-            );
-          })}
+            ))}
+          </div>
+
+          {/* Detail panel desktop */}
+          {selected !== null && (
+            <div className="max-w-2xl mx-auto mb-4 card-dark p-6 text-center animate-fade-in relative">
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-3 right-3 text-slate-500 hover:text-white transition-colors"
+                aria-label="Fechar"
+              >
+                <X size={16} />
+              </button>
+              <h3 className="font-heading font-bold text-lg mb-1 text-blue-400">
+                {satellites[selected].name}
+              </h3>
+              <p className="text-slate-400 text-sm mb-3">{satellites[selected].tagline}</p>
+              <p className="text-slate-300 text-sm leading-relaxed">{satellites[selected].desc}</p>
+            </div>
+          )}
         </div>
 
-        {/* Selected detail (desktop) */}
-        {selected !== null && (
-          <div className="hidden lg:block max-w-xl mx-auto mb-8 card-dark p-6 text-center animate-fade-in">
-            <h3 className="font-heading font-bold text-lg mb-1 text-blue-400">
-              {satellites[selected].name}
-            </h3>
-            <p className="text-slate-400 text-sm mb-3">{satellites[selected].tagline}</p>
-            <p className="text-slate-300 text-sm leading-relaxed">{satellites[selected].desc}</p>
+        {/* Mobile cards - click to expand */}
+        <div className={`lg:hidden space-y-3 stagger-children ${isVisible ? 'visible' : ''}`}>
+          {/* Mobile logo */}
+          <div className="flex justify-center mb-8">
+            <div className="w-20 h-20 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shadow-xl p-4">
+              <img src={logoChordataEcossistema} alt="Ecossistema Chordata" className="w-full h-full object-contain" loading="lazy" decoding="async" />
+            </div>
           </div>
-        )}
 
-        {/* Mobile cards */}
-        <div className={`lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 stagger-children ${isVisible ? 'visible' : ''}`}>
           {satellites.map((sat, i) => (
             <div
               key={i}
-              className="card-dark p-5 cursor-pointer"
-              onClick={() => setSelected(selected === i ? null : i)}
+              className={`card-dark overflow-hidden transition-all duration-200 ${
+                selected === i ? 'ring-1 ring-blue-500/30' : ''
+              }`}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden shrink-0 ${
-                  sat.logo ? 'bg-slate-700' : 'bg-slate-700'
-                }`}>
-                  <SatelliteIcon sat={sat} size={sat.logo ? 40 : 20} selected={selected === i} />
+              <button
+                className="w-full p-4 flex items-center gap-3 text-left"
+                onClick={() => handleSelect(i)}
+              >
+                <div className="w-12 h-12 rounded-lg bg-slate-700 flex items-center justify-center overflow-hidden shrink-0">
+                  <img src={sat.logo} alt={sat.name} className="w-10 h-10 object-contain" loading="lazy" decoding="async" />
                 </div>
-                <div>
+                <div className="flex-1 min-w-0">
                   <h3 className="font-heading font-bold text-sm text-white">{sat.name}</h3>
                   <p className="text-xs text-blue-400">{sat.tagline}</p>
                 </div>
-              </div>
+                <ChevronDown
+                  size={18}
+                  className={`text-slate-400 shrink-0 transition-transform duration-200 ${
+                    selected === i ? 'rotate-180 text-blue-400' : ''
+                  }`}
+                />
+              </button>
               {selected === i && (
-                <p className="text-slate-400 text-sm leading-relaxed animate-fade-in">{sat.desc}</p>
+                <div className="px-4 pb-4 animate-fade-in">
+                  <p className="text-slate-400 text-sm leading-relaxed border-t border-slate-700/50 pt-3">
+                    {sat.desc}
+                  </p>
+                </div>
               )}
             </div>
           ))}
